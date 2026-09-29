@@ -116,6 +116,7 @@ section.block{padding-block:clamp(64px,8vw,104px)}
 .cover{overflow:hidden;border-left:1px solid var(--rule);min-height:280px;display:flex;align-items:center;justify-content:center}
 .cover img{transition:transform .5s ease}
 .cover.gb{background:#08070C;gap:14px;padding:28px 20px 0;align-items:flex-end}
+.cover.gb img{width:38%;border-radius:22px 22px 0 0;border:1px solid #2c2a36;border-bottom:0}
 .cover.photo img{width:100%;height:100%;object-fit:cover;object-position:top left}
 @media (max-width:860px){.work-card{grid-template-columns:1fr}.cover{border-left:0;border-top:1px solid var(--rule)}}
 .work-card.soon{grid-template-columns:1fr;border-style:dashed;background:transparent}
@@ -407,24 +408,6 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
 .work-card{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 80px)}
 .work-card.flash{border-color:var(--red);box-shadow:0 0 0 3px var(--red-soft)}
 
-/* work index: equal cards, aligned covers */
-.work-card{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);min-height:400px}
-.work-card:not(.soon) .work-text{align-content:center}
-.cover{height:100%;min-height:400px;position:relative;overflow:hidden}
-.cover.gb{background:radial-gradient(120% 90% at 50% 100%,#231f45 0%,#0d0b17 55%,#08070C 100%);padding:0;align-items:center;justify-content:center}
-.cover.blw{background:radial-gradient(120% 90% at 50% 100%,#10233f 0%,#070a10 60%,#000 100%);padding:40px 0 0 40px;align-items:flex-start;justify-content:flex-start}
-.cover.blw .win{width:118%;border-radius:10px 0 0 0;border:1px solid #2a2f38;border-right:0;border-bottom:0;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
-.cover.blw .win img{width:100%}
-.cover.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:30% 20%}
-.work-card:hover .cover img{transform:none}
-.iphone{position:relative;height:344px;aspect-ratio:1206/2622;padding:7px;border-radius:44px;background:#0b0b0e;box-shadow:0 0 0 1.5px #4a4750,0 0 0 3px #1c1b20,0 40px 70px -30px rgba(0,0,0,.9);transition:transform .5s ease}
-.cover .iphone img,.iphone img{width:100%;height:100%;object-fit:cover;border-radius:37px;display:block;border:0;transform:none}
-.iphone::before,.iphone::after{content:"";position:absolute;width:3px;border-radius:2px;background:#2b2a31}
-.iphone::before{left:-4px;top:18%;height:12%;box-shadow:0 -34px 0 -1px #2b2a31}
-.iphone::after{right:-4px;top:24%;height:16%}
-.work-card:hover .iphone{transform:translateY(-6px)}
-.cover .iphone{margin-block:28px}
-@media (max-width:860px){.work-card{min-height:0}.cover{min-height:400px;height:400px}}
 .nav{align-items:center}
 .menu-btn{line-height:inherit}
 
@@ -506,9 +489,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
             <div class="chips"><span class="chip hot">iOS</span><span class="chip">Expo</span><span class="chip">Swift</span><span class="chip">Screen Time API</span><span class="chip">Vision</span><span class="chip">Supabase</span></div>
             <span class="go">Read the case study →</span>
           </div>
-          <div class="cover gb" aria-hidden="true">
-            <div class="iphone"><img src="img/gb-locked.jpg" alt="" loading="lazy"></div>
-          </div>
+          <div class="cover gb" aria-hidden="true"><img src="img/gb-locked.jpg" alt="" loading="lazy"></div>
         </a>
         <a class="work-card" id="work-billery" href="#billery">
           <div class="work-text">
@@ -518,7 +499,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
             <div class="chips"><span class="chip hot">Next.js 16</span><span class="chip">Prisma</span><span class="chip">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">PWA</span></div>
             <span class="go">Read the case study →</span>
           </div>
-          <div class="cover blw" aria-hidden="true"><div class="win"><img src="img/blw-home-prompt.jpg" alt="" loading="lazy"></div></div>
+          <div class="cover blw" aria-hidden="true"><img src="img/blw-home-prompt.jpg" alt="" loading="lazy"></div>
         </a>
         <a class="work-card" id="work-bethy" href="#bethy">
           <div class="work-text">
