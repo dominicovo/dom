@@ -281,6 +281,108 @@ dialog.lb img{max-height:88vh;width:auto;margin:0 auto;border-radius:6px}
 dialog.lb p{color:#E9EBEF;font-family:var(--mono);font-size:12px;text-align:center;margin-top:10px}
 dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;border:0;border-radius:99px;width:38px;height:38px;font-size:20px;cursor:pointer}
 
+/* ---------- in-app sections ---------- */
+.phone-frame.light{background:#F3F7FC}
+.stack-note{border:1px dashed var(--rule-2);padding:22px;display:grid;gap:10px;font-size:14.5px;color:var(--ink-2);align-self:stretch}
+.stack-note b{color:var(--ink)}
+.feature-map{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));border-top:1px solid var(--rule-2);border-left:1px solid var(--rule-2)}
+.feature-map > div{padding:20px;border-right:1px solid var(--rule-2);border-bottom:1px solid var(--rule-2);background:var(--surface);display:grid;gap:6px;align-content:start}
+.feature-map .mono{color:var(--red);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.feature-map b{font-family:var(--display);font-size:18px;font-weight:600;letter-spacing:-.01em;line-height:1.25}
+.feature-map p{font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.fm-title{font-size:24px;font-weight:600;margin:clamp(40px,5vw,64px) 0 16px}
+.thumbs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+@media (max-width:900px){.thumbs{grid-template-columns:1fr 1fr}}
+@media (max-width:460px){.thumbs{grid-template-columns:1fr}}
+.thumbs .browser img{aspect-ratio:16/10;object-fit:cover;object-position:top}
+.thumbs figcaption{font-size:13.5px}
+.thumbs figcaption b{font-size:15px}
+.cover.bl{background:linear-gradient(180deg,#EAF2FD,#F7FAFE);gap:14px;padding:28px 20px 0;align-items:flex-end}
+.cover.bl img{width:30%;border-radius:18px 18px 0 0;border:1px solid #D5DEEA;border-bottom:0}
+.cover.bl img:nth-child(2){width:33%}
+
+/* Bethy illustrations: the dashboard's own light surface */
+.bx-block{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:center;padding-block:clamp(28px,4vw,48px);border-top:1px solid var(--rule)}
+.bx-block:first-of-type{border-top:0;padding-top:0}
+.bx-block.rev .bx-copy{order:2}
+@media (max-width:900px){.bx-block{grid-template-columns:1fr}.bx-block.rev .bx-copy{order:0}}
+.bx-copy{display:grid;gap:12px;color:var(--ink-2);max-width:56ch}
+.bx-copy .mono{color:var(--red);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.bx-copy h3{font-size:clamp(22px,2.4vw,30px);font-weight:600;color:var(--ink);line-height:1.15}
+.bx-copy b{color:var(--ink);font-weight:600}
+.bx-app{--g9:#111827;--g6:#4B5563;--g5:#6B7280;--g2:#E5E7EB;--g1:#F3F4F6;--bl:#2563EB;background:#fff;color:var(--g9);border:1px solid #D9DDE3;border-radius:12px;box-shadow:0 30px 60px -40px rgba(17,24,39,.45);overflow:hidden;font-size:13px;line-height:1.4;min-width:0}
+.bx-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--g2);background:#FCFCFD}
+.bx-top > b{font-size:14.5px}
+.bx-muted{color:var(--g5);font-size:12px}
+.bx-btn{margin-left:auto;background:var(--bl);color:#fff;border-radius:7px;padding:6px 11px;font-weight:600;font-size:12px;white-space:nowrap}
+.bx-btn.ghost{background:#fff;color:var(--g9);border:1px solid #D1D5DB;margin-left:0}
+.bx-board{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:10px;padding:14px;background:#F8F9FA;overflow-x:auto}
+.bx-col{display:grid;gap:8px;align-content:start}
+.bx-colh{display:flex;align-items:center;gap:6px;font-weight:600;font-size:12px;color:var(--g6)}
+.bx-colh i{width:7px;height:7px;border-radius:50%}
+.bx-colh span{margin-left:auto;background:var(--g1);border-radius:99px;padding:0 7px;font-size:11px}
+.bx-card{background:#fff;border:1px solid var(--g2);border-radius:9px;padding:10px;display:grid;gap:5px}
+.bx-card > b{font-size:12.5px;line-height:1.3}
+.bx-card.bx-hl{border-color:#FCD34D;box-shadow:0 0 0 3px rgba(245,158,11,.12)}
+.bx-tags{display:flex;gap:4px;flex-wrap:wrap}
+.bx-tags em{font-style:normal;font-size:10.5px;font-weight:600;padding:2px 7px;border-radius:99px;background:var(--g1);color:var(--g6)}
+.bx-tags em.p-low{background:#ECFDF5;color:#047857}.bx-tags em.p-med{background:#EFF6FF;color:#1D4ED8}.bx-tags em.p-high{background:#FFFBEB;color:#B45309}.bx-tags em.p-em{background:#FEF2F2;color:#B91C1C}
+.bx-search{font-size:11px;color:#2563EB}
+.bx-trade{display:flex;justify-content:space-between;gap:6px;border-top:1px solid var(--g1);padding-top:6px;font-size:11px;color:var(--g6)}
+.bx-trade b{color:var(--g9)}
+.bx-body{padding:16px;display:grid;gap:14px}
+.bx-steps{display:grid;grid-template-columns:repeat(5,1fr);margin:0;padding:0;list-style:none;font-size:10.5px;color:#9CA3AF;font-weight:600;text-align:center}
+.bx-steps li{position:relative;padding-top:18px}
+.bx-steps li::before{content:"";position:absolute;top:4px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:#E5E7EB;z-index:1}
+.bx-steps li::after{content:"";position:absolute;top:8px;left:-50%;width:100%;height:2px;background:#E5E7EB}
+.bx-steps li:first-child::after{display:none}
+.bx-steps li.done,.bx-steps li.cur{color:var(--g9)}
+.bx-steps li.done::before,.bx-steps li.done::after,.bx-steps li.cur::after{background:#2563EB}
+.bx-steps li.cur::before{background:#F59E0B;box-shadow:0 0 0 4px rgba(245,158,11,.2)}
+.bx-tl{display:grid;gap:10px;border-left:2px solid var(--g2);padding-left:14px}
+.bx-tl > div{display:grid;gap:2px;position:relative}
+.bx-tl > div::before{content:"";position:absolute;left:-19px;top:5px;width:8px;height:8px;border-radius:50%;background:#2563EB;box-shadow:0 0 0 3px #fff}
+.bx-tl em{font-style:normal;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.bx-tl em.a-t{color:#6B7280}.bx-tl em.a-b{color:#2563EB}
+.bx-tl p{font-size:12.5px;color:var(--g9)}
+.bx-tl span{font-size:11px;color:#9CA3AF}
+.bx-approve{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;border:1px solid #FCD34D;background:#FFFBEB;border-radius:10px;padding:12px}
+.bx-approve > div:first-child{display:grid;gap:2px}
+.bx-fee{font-size:18px}
+.bx-actions{grid-column:1/-1;display:flex;gap:8px}
+.bx-actions .bx-btn{margin-left:0;flex:1;text-align:center;padding:8px}
+.bx-prompts{display:flex;flex-wrap:wrap;gap:6px}
+.bx-prompts span{border:1px solid var(--g2);border-radius:99px;padding:5px 10px;font-size:12px;color:var(--g6);background:#fff}
+.bx-chat{display:grid;gap:10px}
+.bx-me{justify-self:end;background:#2563EB;color:#fff;border-radius:14px 14px 4px 14px;padding:8px 12px;max-width:80%}
+.bx-ai{justify-self:start;background:var(--g1);border-radius:14px 14px 14px 4px;padding:10px 12px;display:grid;gap:6px;max-width:92%}
+.bx-ai a{display:block;background:#fff;border:1px solid var(--g2);border-radius:8px;padding:7px 9px;font-size:12px;color:var(--g9);text-decoration:none}
+.bx-ai a::after{content:" →";color:#2563EB}
+.bx-input{display:flex;justify-content:space-between;align-items:center;border:1px solid var(--g2);border-radius:10px;padding:9px 10px 9px 12px;color:#9CA3AF}
+.bx-input span{background:var(--g9);color:#fff;border-radius:50%;width:24px;height:24px;display:grid;place-items:center;font-size:12px}
+.bx-q{font-size:12px;font-weight:600;color:#374151;margin-top:2px}
+.bx-seg{display:grid;grid-template-columns:repeat(3,1fr);background:var(--g1);border-radius:8px;padding:3px;gap:3px}
+.bx-seg span{text-align:center;padding:6px;border-radius:6px;font-size:12px;color:var(--g6)}
+.bx-seg span.on{background:#fff;color:var(--g9);font-weight:600;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.bx-opt{display:flex;gap:10px;border:1px solid var(--g2);border-radius:10px;padding:10px 12px}
+.bx-opt > div{display:grid;gap:2px}
+.bx-opt i{flex:none;width:14px;height:14px;border-radius:50%;border:1.5px solid #D1D5DB;margin-top:2px}
+.bx-opt.on{border-color:#2563EB;background:#EFF6FF}
+.bx-opt.on i{border:4px solid #2563EB}
+.bx-rec{font-style:normal;font-size:10px;font-weight:700;color:#047857;background:#ECFDF5;border-radius:99px;padding:1px 7px;margin-left:4px}
+.bx-code{font-family:var(--mono);font-size:15px;background:#0A0A0B;color:#fff;border-radius:8px;padding:12px 14px;letter-spacing:.04em}
+.bx-code span{color:#93C5FD;font-size:12px}
+.bx-phone{justify-self:center;width:min(300px,100%);background:#0A0A0B;border-radius:40px;padding:10px;box-shadow:0 30px 60px -36px rgba(10,10,11,.6)}
+.bx-ph-in{background:#F6F7F9;border-radius:31px;padding:28px 14px 10px;display:grid;gap:10px;color:#111827;font-size:13px}
+.bx-ph-h{font-family:var(--display);font-size:26px;font-weight:800;letter-spacing:-.02em;padding-left:4px}
+.bx-ph-sub{font-size:12px;font-weight:700;color:#6B7280;letter-spacing:.04em;text-transform:uppercase;padding-left:4px;margin-top:4px}
+.bx-ph-card{background:rgba(255,255,255,.85);border:1px solid #E5E7EB;border-radius:18px;padding:14px;display:grid;gap:3px}
+.bx-ph-card > b{font-size:24px;letter-spacing:-.01em}
+.bx-ph-card a{color:#2563EB;font-size:12.5px;font-weight:600;margin-top:4px}
+.bx-ph-cta{background:#2563EB;color:#fff;text-align:center;border-radius:16px;padding:13px;font-weight:600}
+.bx-ph-tabs{display:grid;grid-template-columns:repeat(5,1fr);background:rgba(255,255,255,.9);border:1px solid #E5E7EB;border-radius:22px;padding:8px 4px;margin-top:10px;font-size:10.5px;color:#6B7280;text-align:center}
+.bx-ph-tabs .on{color:#2563EB;font-weight:700}
+
 .view[hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -342,7 +444,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
         <p class="label">Selected work</p>
         <div>
           <h2>Three products, three industries, one pair of hands.</h2>
-          <p>Each project has its own page with the real screens, the design decisions behind them, and the engineering that made them work.</p>
+          <p>Each project has its own page walking through the product from the inside: the screens, the decisions behind them and the engineering that made them work.</p>
         </div>
       </div>
       <div class="work-list">
@@ -364,11 +466,11 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
           <div class="work-text">
             <p class="label">Fintech · Invoicing · Developer API</p>
             <h3>Billery</h3>
-            <p>Describe the work in a sentence, or say it out loud, and get a branded invoice ready to send. Web app, PWA, native iOS and a public API.</p>
+            <p>Describe the work in a sentence, or say it out loud, and get a branded invoice ready to send. A native SwiftUI iPhone app, a web app and PWA, and a public API.</p>
             <div class="chips"><span class="chip hot">Next.js 16</span><span class="chip">Prisma</span><span class="chip">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">SwiftUI</span></div>
             <span class="go">Read the case study →</span>
           </div>
-          <div class="cover photo" aria-hidden="true"><img src="img/bl-hero.jpg" alt="" loading="lazy"></div>
+          <div class="cover bl" aria-hidden="true"><img src="img/bla-invoices.jpg" alt="" loading="lazy"><img src="img/bla-home.jpg" alt="" loading="lazy"><img src="img/bla-clients.jpg" alt="" loading="lazy"></div>
         </a>
         <a class="work-card" href="#bethy">
           <div class="work-text">
@@ -578,10 +680,10 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
     <p class="tag">Describe the work in a sentence, or say it out loud, and get a branded invoice ready to send in under a minute.</p>
   </section>
   <div class="wrap"><div class="facts">
-    <div><h4>Role</h4><ul><li>Product &amp; UX design</li><li>Visual identity &amp; illustration</li><li>Full-stack engineering</li><li>Native iOS app</li><li>Public API design</li></ul></div>
-    <div><h4>Surfaces</h4><ul><li>Web app + installable PWA</li><li>Native SwiftUI iOS app</li><li>Customer share links &amp; PDFs</li><li>REST API + webhooks</li><li>Marketing site</li></ul></div>
+    <div><h4>Role</h4><ul><li>Product &amp; UX design</li><li>Full-stack engineering</li><li>Native iOS app</li><li>Public API design</li></ul></div>
+    <div><h4>Surfaces</h4><ul><li>Native SwiftUI iOS app</li><li>Web app + installable PWA</li><li>Customer share links &amp; PDFs</li><li>REST API + webhooks</li></ul></div>
     <div><h4>Business model</h4><ul><li>Free to start</li><li>Pro at £10/month</li><li>No per-seat pricing</li></ul></div>
-    <div><h4>Stack</h4><div class="chips"><span class="chip hot">Next.js 16</span><span class="chip">React 19</span><span class="chip">Tailwind v4</span><span class="chip">Prisma 7</span><span class="chip">PostgreSQL</span><span class="chip">NextAuth</span><span class="chip hot">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">react-pdf</span><span class="chip">Zod</span><span class="chip hot">SwiftUI</span></div></div>
+    <div><h4>Stack</h4><div class="chips"><span class="chip hot">SwiftUI</span><span class="chip">Swift Charts</span><span class="chip hot">Next.js 16</span><span class="chip">Prisma 7</span><span class="chip">PostgreSQL</span><span class="chip">NextAuth</span><span class="chip hot">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">react-pdf</span></div></div>
   </div></div>
 
   <section class="case-sec"><div class="wrap two">
@@ -592,87 +694,71 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
     </div>
     <div class="prose">
       <h3>What I built</h3>
-      <p>Type or dictate what you did and Billery drafts itemised line items with quantities and prices, all editable before you create the invoice. It emails a branded PDF, gives you a share link your customer can open with no account, and tracks each document from draft to sent to paid, with overdue ones flagged.</p>
-      <p>Quotes convert to invoices in one click. Receipts, customers, your logo, VAT and company numbers and bank details are all handled.</p>
+      <p>A billing workspace with four jobs: <strong>clients, invoices, quotes and getting paid</strong>. You describe the work in plain English or by voice and Billery drafts itemised line items. It emails a branded PDF, gives the customer a share link that needs no account, and tracks every document from draft to sent to paid, with overdue ones flagged.</p>
+      <p>The same workspace runs as a web app, an installable PWA and a native SwiftUI iPhone app.</p>
     </div>
   </div></section>
 
   <section class="case-sec"><div class="wrap">
-    <h2>The product story, on the page</h2>
-    <p class="intro">The marketing site is where the product's promise gets tested first, so I designed it section by section to answer the questions a sole trader actually asks. Captured from the current site.</p>
-    <div class="web-list">
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb class="shot" style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · home</span></div><img src="img/bl-hero.jpg" alt="Billery homepage hero: Billing that takes a sentence" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Hero</span><b>Show the whole product in one frame</b>The headline makes the promise ("Billing that takes a sentence") and the composition on the right proves it: a plain-English request, the assistant's reply, the drafted invoice card and a <em>paid</em> notification. You see the full loop before you scroll.</figcaption></figure>
-      </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · features</span></div><img src="img/bl-features.jpg" alt="Billery features grid with nine features" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Features</span><b>Nine jobs, written as outcomes</b>Each tile names what you get ("Describe the work, get the invoice", "Quote it, then invoice it") rather than listing a feature. One icon style and one card shape keep a dense grid scannable.</figcaption></figure>
-      </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · how it works</span></div><img src="img/bl-how.jpg" alt="Billery three steps: add a customer, describe the work, send or share" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">How it works</span><b>Three steps, three illustrations</b>Add a customer, describe the work, send or share. Spot illustrations recoloured to the brand blue make each step recognisable at a glance.</figcaption></figure>
-      </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · developers</span></div><img src="img/bl-dev.jpg" alt="Billery developer section with API code sample" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Developers</span><b>An API pitched in plain English</b>For businesses that already have a booking form or shop. A real request sample sits beside three benefits (create documents, know when they're paid, build safely), with the customer-facing email preview underneath.</figcaption></figure>
-      </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · who it's for</span></div><img src="img/bl-who.jpg" alt="Billery persona carousel: freelance designer, wedding photographer, private tutor" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Who it's for</span><b>Personas as example sentences</b>A carousel of real-sounding jobs (freelance designer, wedding photographer, private tutor), each with the sentence you'd actually say to invoice it.</figcaption></figure>
-      </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · install</span></div><img src="img/bl-install.jpg" alt="Billery PWA install steps for iPhone, Android and desktop" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Install</span><b>An app without the app store</b>Billery installs as a PWA, so the site teaches the install itself: three short numbered recipes for iPhone, Android and desktop next to a phone showing the result.</figcaption></figure>
-      </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · pricing</span></div><img src="img/bl-pricing.jpg" alt="Billery pricing: Free and Pro at £10 a month" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Pricing</span><b>One plan, plain maths</b>Free to start, then one price with no per-seat charges or add-ons. The Pro card inverts to white so the choice is obvious, and the page reads in five seconds.</figcaption></figure>
-      </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery app · sign in</span></div><img src="img/bl-signin.jpg" alt="Billery app sign-in with product demo on the left" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">App · sign in</span><b>One form for new and returning users</b>The app's entry keeps selling while you sign in: the left half replays the invoice-in-a-sentence demo, the right half is a single email and password form that creates the account automatically if the email is new.</figcaption></figure>
-      </div>
-    </div>
-  </div></section>
-
-  <section class="case-sec"><div class="wrap">
-    <h2>Where it started: Billery v1</h2>
-    <p class="intro">The first version (2025) was a cross-border billing tool for freelancers, with currency accounts in GBP, USD and NGN and payouts to a local bank. It was built with Next.js 13, Redux Toolkit and Bootstrap. I rebuilt the product around one idea, the invoice in a sentence, on Next.js 16, Prisma and Tailwind v4. Real screenshots from v1:</p>
-    <div class="web-grid">
+    <h2>Inside the iPhone app</h2>
+    <p class="intro">A native SwiftUI app with a five-tab structure: Home, Clients, Invoices, Quotes and Proposals. Captured on the iOS Simulator against Billery's local development backend, using a fictional design studio's clients and invoices.</p>
+    <div class="phones">
       <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery v1 · home</span></div><img src="img/bl-v1-dashboard.jpg" alt="Billery v1 dashboard with currency accounts and billed chart" loading="lazy"></div></button>
-        <figcaption><b>Currency accounts</b>Balances per currency as cards, a billed-per-month bar chart with the current month in solid brand blue, and recent bills alongside. Request bill and Send bill are the two primary actions.</figcaption>
+        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-home.jpg" alt="Billery iOS Home with collected, outstanding, invoice and customer tiles" loading="lazy"></div></button>
+        <figcaption><span class="mono">01 · Home</span><b>The money question, answered first</b>Four tiles answer what a sole trader actually asks when they open the app: how much has come in, how much is still owed, how many invoices and how many clients. Each tile gets its own tinted icon so the grid scans without reading.</figcaption>
       </figure>
       <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery v1 · overview</span></div><img src="img/bl-v1-overview.jpg" alt="Billery v1 overview with billed, paid, pending and overdue tiles" loading="lazy"></div></button>
-        <figcaption><b>Overview</b>Billed, paid, pending and overdue as colour-coded tiles, a billing chart, and a billing calculator that previews what you'll receive in your payout currency.</figcaption>
+        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-home2.jpg" alt="Billery iOS revenue trend chart and pipeline status" loading="lazy"></div></button>
+        <figcaption><span class="mono">02 · Revenue &amp; pipeline</span><b>Six months at a glance</b>A Swift Charts bar chart of paid revenue per month, with a quiet dashed grid and a gradient on the bars. Below it, the pipeline counts documents by status, and the dot colours match the status pills used everywhere else.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-invoices.jpg" alt="Billery iOS invoices list with draft, sent, paid and overdue pills" loading="lazy"></div></button>
+        <figcaption><span class="mono">03 · Invoices</span><b>Status you can see from across the room</b>Each card leads with the number and the client, puts the total top right, and ends in a status pill. The icon tile takes the status colour too, so grey is draft, blue is sent, green is paid and red is overdue even when you only see the edge of the card.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-invoice-detail.jpg" alt="Billery iOS invoice detail with amount, overview and actions" loading="lazy"></div></button>
+        <figcaption><span class="mono">04 · Invoice detail</span><b>Amount first, actions within thumb reach</b>The total and client sit in a summary card at the top, the facts follow in a grouped list, and the three actions (download the PDF, send to the customer, delete) are pinned above the tab bar where a thumb can reach them. Only <em>Send</em> is filled.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-editor.jpg" alt="Billery iOS invoice editor with customer, dates and line items" loading="lazy"></div></button>
+        <figcaption><span class="mono">05 · Editor</span><b>One editor for invoices and quotes</b>A single SwiftUI editor handles both document types: customer picker, issue and due dates, then line items as self-contained cards with description, quantity, unit price and a running line total. Totals, discount and tax follow below.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-clients.jpg" alt="Billery iOS clients list with invoice and quote counts" loading="lazy"></div></button>
+        <figcaption><span class="mono">06 · Clients</span><b>Every client, with their paperwork attached</b>Each client card shows contact details plus two chips counting their invoices and quotes, so you can see who you bill most without opening anything.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-quotes.jpg" alt="Billery iOS quotes list with draft, sent, accepted and cancelled" loading="lazy"></div></button>
+        <figcaption><span class="mono">07 · Quotes</span><b>From draft to accepted</b>Quotes follow the same card pattern with their own lifecycle: draft, sent, accepted and cancelled. When a customer says yes, the quote converts into an invoice without retyping.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-proposal-new.jpg" alt="Billery iOS new quote form" loading="lazy"></div></button>
+        <figcaption><span class="mono">08 · New quote</span><b>Sensible defaults</b>A new quote opens with today's date, a 14-day expiry and one empty line item ready to type into, so the fastest path is also the default one.</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="stack-note">
+          <p class="mono" style="color:var(--red);font-size:11px;letter-spacing:.1em;text-transform:uppercase">Under the hood</p>
+          <p><b>SwiftUI + Swift Charts</b> for the interface, one <code>AppState</code> observable object for data, and a typed API client. A small Node backend mirrors the web app's API so the app can be developed and tested on a real iPhone over Wi-Fi.</p>
+        </div>
       </figure>
     </div>
   </div></section>
 
   <section class="case-sec"><div class="wrap">
-    <h2>Design decisions</h2>
-    <p class="intro">What changed between the first version and the rebuild, and why the product works the way it does now.</p>
-    <ul class="decisions">
-      <li><b>AI drafts, the person decides</b><span>The model fills in the line items, but every field stays editable and nothing is sent until you press send. The AI is a faster keyboard, never an autopilot for someone's money.</span></li>
-      <li><b>Voice as a first-class input</b><span>Tap the mic and your words land in the description box. On a job site with dirty hands, talking is faster than typing.</span></li>
-      <li><b>Zero friction for the payer</b><span>Customers never sign up. They get a PDF by email or a share link that works on any device, with a download button built in.</span></li>
-      <li><b>Documents that match your paperwork</b><span>You choose exactly what prints: address, phone, VAT and company numbers, payment details and a custom footer. Brand it once and it appears on every PDF.</span></li>
-      <li><b>From dashboard-first to action-first</b><span>v1 opened on charts. The rebuild opens on the one thing people come to do, which is describing a job and sending the invoice. The numbers moved one level down.</span></li>
-    </ul>
-  </div></section>
-
-  <section class="case-sec"><div class="wrap two">
-    <div class="prose">
-      <h3>Engineering highlights</h3>
-      <p><strong>An in-app assistant with real tools.</strong> The model can search and create customers, create invoices, quotes and receipts, and list recent documents through typed function calls, so its answers come from the account's actual data.</p>
-      <p><strong>A public REST API designed for developers.</strong> Create invoices, quotes and receipts from your own booking form or shop, with optional email delivery in the same request. Test keys validate and price exactly like live keys but write nothing and email nobody. Idempotency keys make retries safe, each key is rate limited, and <strong>signed webhooks</strong> report sent, paid and converted events.</p>
-      <p>Stripe subscriptions with a self-serve billing portal, NextAuth with password reset, and PDF rendering with react-pdf. A native <strong>SwiftUI iOS app</strong> uses Swift Charts for the dashboard, backed by a mobile API that mirrors the web app.</p>
+    <h2>Inside the web app</h2>
+    <p class="intro">The web app is where the AI and the business plumbing live. These are the parts of the product a signed-in user works with, and how each one is built.</p>
+    <div class="feature-map">
+      <div><span class="mono">Home</span><b>Create menu and assistant</b><p>The home screen opens on a create menu for invoices, quotes, receipts and customers, next to an assistant you can type or talk to. Voice input uses the browser's speech recognition and lands your words in the prompt box.</p></div>
+      <div><span class="mono">AI</span><b>Invoice in a sentence</b><p>An AI-draft endpoint turns a plain-English description into line items with quantities and prices. The assistant uses typed tools to search and create customers, create invoices, quotes and receipts, and list recent documents, so its answers come from real account data.</p></div>
+      <div><span class="mono">Documents</span><b>Invoices, quotes and receipts</b><p>Each document has a draft, sent, paid, overdue or accepted state, and a quote converts to an invoice in one click with line items carried over. PDFs are rendered with react-pdf.</p></div>
+      <div><span class="mono">Customers</span><b>Share links with no sign-up</b><p>Every invoice and quote gets a tokenised public link (<code>/i/…</code> and <code>/q/…</code>) that opens on any device, with a PDF download built in.</p></div>
+      <div><span class="mono">Settings</span><b>Branding and paperwork</b><p>Logo, company name, address, VAT and company numbers, bank details and a footer line, each toggled on or off for what prints on your documents.</p></div>
+      <div><span class="mono">Developers</span><b>API keys and webhooks</b><p>Users create test and live API keys and register webhook endpoints from their profile. Webhooks are signed, keys are rate limited, and idempotency keys make retries safe.</p></div>
+      <div><span class="mono">Billing</span><b>Stripe subscription</b><p>A free tier with an invoice limit, then Pro at £10 a month through Stripe Checkout, with a self-serve billing portal for changes and cancellation.</p></div>
+      <div><span class="mono">Auth</span><b>Accounts and recovery</b><p>NextAuth with a single email form that signs you in or creates your account, plus forgot- and reset-password flows by email.</p></div>
     </div>
-    <div>
-      <h3 style="font-size:24px;font-weight:600;margin-bottom:10px">Developer experience</h3>
-      <pre class="code"><span class="c"># Create and send an invoice</span>
+    <div class="two" style="margin-top:40px;align-items:start">
+      <pre class="code"><span class="c"># Create and send an invoice from your own system</span>
 <span class="k">POST</span> /api/v1/invoices
 Authorization: Bearer <span class="v">blry_test_…</span>
 Idempotency-Key: <span class="v">order-8812</span>
@@ -685,10 +771,48 @@ Idempotency-Key: <span class="v">order-8812</span>
   ],
   <span class="s">"send_email"</span>: <span class="v">true</span>
 }</pre>
-      <h3 style="font-size:24px;font-weight:600;margin:28px 0 10px">Brand &amp; campaigns</h3>
+      <figure class="shot">
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery app · sign in</span></div><img src="img/bl-signin.jpg" alt="Billery web app sign-in with product demo on the left" loading="lazy"></div></button>
+        <figcaption><b>The front door</b>The sign-in screen keeps selling while you sign in: the left half replays the invoice-in-a-sentence demo, the right half is one form for new and returning users.</figcaption>
+      </figure>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>Design decisions</h2>
+    <p class="intro">The choices that shape how Billery feels to use.</p>
+    <ul class="decisions">
+      <li><b>AI drafts, the person decides</b><span>The model fills in the line items, but every field stays editable and nothing is sent until you press send. The AI is a faster keyboard, never an autopilot for someone's money.</span></li>
+      <li><b>One status language</b><span>Draft, sent, paid, overdue, accepted and cancelled each have one colour, used for pills, icon tiles, pipeline dots and chart legends on iOS and web alike.</span></li>
+      <li><b>Voice as a first-class input</b><span>On a job site with dirty hands, talking is faster than typing, so the mic sits next to the prompt box instead of in a menu.</span></li>
+      <li><b>Zero friction for the payer</b><span>Customers never sign up. They get a PDF by email or a share link that works on any device.</span></li>
+      <li><b>From dashboard-first to action-first</b><span>Billery v1 opened on charts. The rebuild opens on the thing people come to do, which is describing a job and sending the invoice. The numbers moved one level down.</span></li>
+    </ul>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>Where it started, and the marketing site</h2>
+    <p class="intro">Billery v1 (2025) was a cross-border billing tool for freelancers, with currency accounts in GBP, USD and NGN, built on Next.js 13, Redux Toolkit and Bootstrap. I rebuilt the product around the invoice-in-a-sentence idea and designed a new marketing site to match.</p>
+    <div class="thumbs">
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>v1 · home</span></div><img src="img/bl-v1-dashboard.jpg" alt="Billery v1 dashboard with currency accounts" loading="lazy"></div></button><figcaption><b>v1 dashboard</b>Balances per currency and a billed-per-month chart.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>v1 · overview</span></div><img src="img/bl-v1-overview.jpg" alt="Billery v1 overview tiles and chart" loading="lazy"></div></button><figcaption><b>v1 overview</b>Billed, paid, pending and overdue tiles with a payout calculator.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · hero</span></div><img src="img/bl-hero.jpg" alt="Billery marketing site hero" loading="lazy"></div></button><figcaption><b>Site hero</b>The whole loop in one frame: request, draft, invoice, paid.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · developers</span></div><img src="img/bl-dev.jpg" alt="Billery marketing site developer section" loading="lazy"></div></button><figcaption><b>Developers section</b>The API pitched in plain English with a real request.</figcaption></figure>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap two">
+    <div class="prose">
+      <h3>Engineering highlights</h3>
+      <p><strong>A public REST API designed for developers.</strong> Create invoices, quotes and receipts from your own booking form or shop, with optional email delivery in the same request. Test keys validate and price exactly like live keys but write nothing and email nobody.</p>
+      <p><strong>Typed AI tools.</strong> The assistant can only act through a small set of typed functions, which keeps it grounded in the account's data and easy to audit.</p>
+      <p><strong>Two clients, one API shape.</strong> The iOS app and the web app speak to the same API contract, so features land on both without a second backend design.</p>
+    </div>
+    <div class="prose">
+      <h3>Brand &amp; campaigns</h3>
       <div style="display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center">
         <button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><img src="img/bl-social-1.jpg" alt="Billery social post: 3 steps to get started with Billery" loading="lazy" style="border:1px solid var(--rule-2)"></button>
-        <p style="font-size:14.5px;color:var(--ink-2)">Brand assets and a launch social campaign ("3 steps to get started") designed alongside the product.</p>
+        <p>Brand assets and a launch social campaign ("3 steps to get started") designed alongside the product.</p>
       </div>
     </div>
   </div></section>
@@ -709,10 +833,10 @@ Idempotency-Key: <span class="v">order-8812</span>
     <p class="tag">An AI property manager for landlords and letting agents. It answers the phone, triages maintenance, finds a tradesperson and only asks you to approve the cost.</p>
   </section>
   <div class="wrap"><div class="facts">
-    <div><h4>Role</h4><ul><li>Product strategy &amp; UX</li><li>Conversation &amp; voice design</li><li>Dashboard &amp; mobile UI</li><li>Real-time systems</li><li>Marketing site &amp; email</li></ul></div>
-    <div><h4>Surfaces</h4><ul><li>Landlord dashboard (web)</li><li>Tenant app (iOS/Android)</li><li>AI phone receptionist</li><li>WhatsApp channel</li><li>Marketing site with live voice demo</li></ul></div>
+    <div><h4>Role</h4><ul><li>Product strategy &amp; UX</li><li>Conversation &amp; voice design</li><li>Dashboard &amp; mobile UI</li><li>Real-time systems</li></ul></div>
+    <div><h4>Surfaces</h4><ul><li>Landlord dashboard (web)</li><li>Tenant app (iOS/Android)</li><li>AI phone receptionist</li><li>WhatsApp channel</li></ul></div>
     <div><h4>Market</h4><ul><li>UK landlords</li><li>Letting agents</li><li>Property management companies</li></ul></div>
-    <div><h4>Stack</h4><div class="chips"><span class="chip">Next.js</span><span class="chip hot">Supabase + RLS</span><span class="chip hot">Twilio Media Streams</span><span class="chip hot">Deepgram Voice Agent</span><span class="chip">Groq</span><span class="chip">WebSockets</span><span class="chip">Expo Router</span><span class="chip">GSAP</span><span class="chip">Framer Motion</span><span class="chip">Vapi</span></div></div>
+    <div><h4>Stack</h4><div class="chips"><span class="chip">Next.js</span><span class="chip hot">Supabase + RLS</span><span class="chip hot">Twilio Media Streams</span><span class="chip hot">Deepgram Voice Agent</span><span class="chip">Groq</span><span class="chip">WebSockets</span><span class="chip">Expo Router</span><span class="chip">GSAP</span></div></div>
   </div></div>
 
   <section class="case-sec"><div class="wrap two">
@@ -723,49 +847,139 @@ Idempotency-Key: <span class="v">order-8812</span>
     </div>
     <div class="prose">
       <h3>What I built</h3>
-      <p>Landlords forward their business number to a dedicated Bethy number, and <strong>every tenant call gets answered, day or night</strong>, by a voice agent that knows that landlord's portfolio. Reports are triaged by category and priority, matched to a tradesperson and scheduled. <strong>Nothing gets booked until the landlord approves the cost.</strong></p>
-      <p>Around that sits a full dashboard (properties, tenants, maintenance, inbox, calendar, tasks, reports, team and billing), a tenant mobile app, and <em>Ask Bethy</em>, an assistant that answers portfolio questions using only real workspace data.</p>
+      <p>A workspace where an AI agent does the running around. Every tenant call is answered by a voice agent that knows the portfolio. Each repair moves through a five-stage pipeline in which <strong>Bethy finds and books the tradesperson itself, and the landlord only steps in to approve the fee.</strong></p>
+      <p>Around that sits a full dashboard for properties, tenants, rent, inbox, calendar, tasks, reports and team, plus a separate tenant app.</p>
     </div>
   </div></section>
 
   <section class="case-sec"><div class="wrap">
-    <h2>Selling an AI employee</h2>
-    <p class="intro">Landlords are sceptical of software, and more sceptical of AI. The marketing site had to make an AI receptionist feel trustworthy and concrete. Captured from the current site.</p>
-    <div class="web-list">
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · home</span></div><img src="img/bt-hero.jpg" alt="Bethy homepage hero: Meet Bethy, Your Property Copilot" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Hero</span><b>Give the AI a face and a voice</b>"Meet Bethy" frames the product as a colleague rather than a tool. The primary button, <em>Talk to Bethy</em>, starts a live voice call in the browser, because the most convincing demo of a voice product is the voice. Integration names sit in a strip underneath.</figcaption></figure>
+    <h2>Inside the dashboard</h2>
+    <p class="intro">The screens below are drawn from the dashboard's code: the stage names and colours, the timeline wording, the suggested prompts and the sample requests all come straight from the repo. They're illustrations rather than screenshots, because the live dashboard holds real workspace data.</p>
+
+    <div class="bx-block">
+      <div class="bx-copy">
+        <span class="mono">01 · Maintenance board</span>
+        <h3>Every repair, one pipeline</h3>
+        <p>Requests move left to right through five stages: <b>Reported</b>, <b>Scouting</b> (Bethy is searching the trades network), <b>Awaiting approval</b>, <b>In progress</b> and <b>Completed</b>. Each stage has one colour, used for the column dot, the status pill and the detail page's stepper.</p>
+        <p>Cards carry what a landlord scans for: the problem, the property, a priority from Low to Emergency, and once a trade is found, who is coming and what it costs.</p>
       </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · what it does</span></div><img src="img/bt-cards.jpg" alt="Bethy feature cards: answers calls, maintenance sourced, one home for your portfolio" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">What it does</span><b>Not just a phone line</b>A photographic bento grid with three promises: answers every tenant call, maintenance sourced and scheduled, and one home for your whole portfolio. Real-world imagery keeps an AI product grounded in bricks and boilers.</figcaption></figure>
+      <div class="bx-app" aria-label="Illustration of the maintenance board">
+        <div class="bx-top"><b>Maintenance</b><span class="bx-muted">5 requests</span><span class="bx-btn">New request</span></div>
+        <div class="bx-board">
+          <div class="bx-col"><div class="bx-colh"><i style="background:#9CA3AF"></i>Reported<span>1</span></div>
+            <div class="bx-card"><b>Leaking kitchen faucet</b><span class="bx-muted">Harbor Point</span><div class="bx-tags"><em class="p-med">Medium</em><em>Plumbing</em></div></div></div>
+          <div class="bx-col"><div class="bx-colh"><i style="background:#3B82F6"></i>Scouting<span>1</span></div>
+            <div class="bx-card"><b>No hot water</b><span class="bx-muted">North Ridge</span><div class="bx-tags"><em class="p-high">High</em><em>Plumbing</em></div><span class="bx-search">Searching trades network…</span></div></div>
+          <div class="bx-col"><div class="bx-colh"><i style="background:#F59E0B"></i>Awaiting approval<span>1</span></div>
+            <div class="bx-card bx-hl"><b>Bedroom outlet sparking</b><span class="bx-muted">Cedar House</span><div class="bx-tags"><em class="p-em">Emergency</em><em>Electrical</em></div><div class="bx-trade"><span>Priya Anand · 4.9★</span><b>£180</b></div></div></div>
+          <div class="bx-col"><div class="bx-colh"><i style="background:#8B5CF6"></i>In progress<span>1</span></div>
+            <div class="bx-card"><b>AC not cooling</b><span class="bx-muted">Harbor Point</span><div class="bx-tags"><em class="p-med">Medium</em><em>HVAC</em></div><div class="bx-trade"><span>Sam O'Connor · 4.7★</span><b>£220</b></div></div></div>
+          <div class="bx-col"><div class="bx-colh"><i style="background:#10B981"></i>Completed<span>1</span></div>
+            <div class="bx-card"><b>Squeaky bedroom door</b><span class="bx-muted">North Ridge</span><div class="bx-tags"><em class="p-low">Low</em><em>General</em></div><div class="bx-trade"><span>Jordan Blake · 4.7★</span><b>£45</b></div></div></div>
+        </div>
       </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · how it works</span></div><img src="img/bt-flow.jpg" alt="Bethy three-step flow from ringing phone to finished repair" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">How it works</span><b>From a ringing phone to a finished repair</b>Three numbered steps on a zig-zag line: forward your number, Bethy answers and triages, you approve and Bethy executes. The third step is the trust moment, so it gets the check mark.</figcaption></figure>
+    </div>
+
+    <div class="bx-block rev">
+      <div class="bx-copy">
+        <span class="mono">02 · Request detail</span>
+        <h3>A timeline written like a colleague's notes</h3>
+        <p>Open a request and a stepper shows where it sits in the pipeline. Below it, an activity timeline records who did what, labelled by actor: the tenant who reported it, Bethy's agent steps, and the manager's decisions.</p>
+        <p>When Bethy has found someone, the request stops at an approval card with the tradesperson, their rating, the slot and the fee. One tap approves it and books the job.</p>
       </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · integrations</span></div><img src="img/bt-integrations.jpg" alt="Bethy integrations grid: Xero, GoCardless, EPC Register, OpenRent, Rightmove" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Integrations</span><b>Plug into the tools you already use</b>Xero, GoCardless, the EPC Register, OpenRent and Rightmove, each with a mono caption saying what flows through it. The section switches to light so it reads as a calm, practical interlude.</figcaption></figure>
+      <div class="bx-app" aria-label="Illustration of a maintenance request detail page">
+        <div class="bx-top"><b>Bedroom outlet sparking</b><span class="bx-tags"><em class="p-em">Emergency</em><em>Electrical</em></span></div>
+        <div class="bx-body">
+          <ol class="bx-steps"><li class="done">Reported</li><li class="done">Scouting</li><li class="cur">Awaiting approval</li><li>In progress</li><li>Completed</li></ol>
+          <div class="bx-tl">
+            <div><em class="a-t">Tenant</em><p>Alex Rivera reported a sparking bedroom outlet via the tenant portal.</p><span>27 Jul · 18:05</span></div>
+            <div><em class="a-b">Bethy</em><p>Bethy started searching the trades network for an Electrical specialist near Cedar House.</p><span>27 Jul · 18:10</span></div>
+            <div><em class="a-b">Bethy</em><p>Bethy found Priya Anand (Residential electrical, 4.9★). Repair scheduled for Aug 3, 10:00 AM. Estimated fee: £180. Awaiting your approval.</p><span>28 Jul · 08:30</span></div>
+          </div>
+          <div class="bx-approve"><div><b>Priya Anand</b><span class="bx-muted">Residential electrical · 4.9★ · Aug 3, 10:00 AM</span></div><b class="bx-fee">£180</b><div class="bx-actions"><span class="bx-btn">Approve fee</span><span class="bx-btn ghost">Decline</span></div></div>
+        </div>
       </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · trust</span></div><img src="img/bt-trust.jpg" alt="Bethy trust section: your data stays yours" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Trust</span><b>Your data stays yours, your money stays with you</b>Three plain commitments backed by how the system works: your workspace is yours, data is encrypted in transit and at rest, and every workspace is isolated at the database level.</figcaption></figure>
+    </div>
+
+    <div class="bx-block">
+      <div class="bx-copy">
+        <span class="mono">03 · Ask Bethy</span>
+        <h3>An assistant that only answers from your data</h3>
+        <p>Ask Bethy opens with suggested prompts a landlord actually asks. Its suggested actions are generated from the workspace itself: fees waiting for approval (most urgent first), reports nobody has started on, and tenants whose rent status is at risk.</p>
+        <p>Each suggestion links straight to the request or tenant it's about, so the answer is also the shortcut.</p>
       </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · solutions</span></div><img src="img/bt-solutions.jpg" alt="Bethy solutions tabs by audience with call log" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Solutions</span><b>Built for how lettings actually works</b>Tabs for independent landlords, letting agents and management companies. Each shows a terminal-style log of an incoming call being triaged, which makes the automation feel inspectable.</figcaption></figure>
+      <div class="bx-app" aria-label="Illustration of the Ask Bethy assistant">
+        <div class="bx-top"><b>Ask Bethy</b><span class="bx-muted">AI assistant</span></div>
+        <div class="bx-body">
+          <div class="bx-prompts"><span>What needs my approval right now?</span><span>Which tenants are at risk?</span><span>Which properties have vacancies?</span></div>
+          <div class="bx-chat">
+            <div class="bx-me">What needs my approval right now?</div>
+            <div class="bx-ai"><b>Here's what needs you today:</b>
+              <a>Approve the £180 fee for "Bedroom outlet sparking" at Cedar House.</a>
+              <a>Kick off AI scouting for "Leaking kitchen faucet" at Harbor Point. Nothing's happened yet.</a>
+            </div>
+          </div>
+          <div class="bx-input">Ask about your portfolio…<span>↑</span></div>
+        </div>
       </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy dashboard · sign in</span></div><img src="img/bt-signin.jpg" alt="Bethy dashboard sign-in, split screen" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">Dashboard · sign in</span><b>The door to the workspace</b>A split screen: the value proposition on brand blue, and a focused sign-in on black with Google as an alternative and a 30-day remember-me for people who check in daily.</figcaption></figure>
+    </div>
+
+    <div class="bx-block rev">
+      <div class="bx-copy">
+        <span class="mono">04 · Activate Bethy</span>
+        <h3>Setting up an AI receptionist in three choices</h3>
+        <p>Turning on the phone agent is a short guided flow. First choose when Bethy should answer: <b>only when you miss a call</b> (the recommended option), or <b>all calls, straight to Bethy</b>. Then give the agent a name and a tone: Friendly, Professional or Direct.</p>
+        <p>Bethy provisions a number and shows the exact carrier forwarding code to dial on your own phone, <code>**61*</code> for missed calls or <code>**21*</code> for all calls, so nobody has to change phone provider.</p>
       </div>
+      <div class="bx-app" aria-label="Illustration of the Activate Bethy flow">
+        <div class="bx-top"><b>Activate Bethy</b><span class="bx-muted">Phone receptionist</span></div>
+        <div class="bx-body">
+          <p class="bx-q">When should Bethy answer?</p>
+          <div class="bx-opt on"><i></i><div><b>Only when you miss a call</b> <em class="bx-rec">Recommended</em><span class="bx-muted">You keep answering as normal. Bethy steps in when you're unavailable.</span></div></div>
+          <div class="bx-opt"><i></i><div><b>All calls, straight to Bethy</b><span class="bx-muted">Every call is answered by Bethy first.</span></div></div>
+          <p class="bx-q">Dial this on your phone</p>
+          <div class="bx-code">**61*<span>your Bethy number</span>#</div>
+          <p class="bx-q">Tone</p>
+          <div class="bx-seg"><span class="on">Friendly</span><span>Professional</span><span>Direct</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bx-block">
+      <div class="bx-copy">
+        <span class="mono">05 · Tenant app</span>
+        <h3>A lighter app for the people who live there</h3>
+        <p>Tenants get their own Expo app instead of a login to the landlord's dashboard. Home shows the next rent payment, the latest announcements and a single prominent action: <b>Report a maintenance issue</b>, with photo upload.</p>
+        <p>Tabs cover Home, Rent (invoices and history), Maintenance (their requests and progress), Announcements and Profile. Tenants join through an invite link the landlord sends from the dashboard.</p>
+      </div>
+      <div class="bx-phone" aria-label="Illustration of the tenant app home screen">
+        <div class="bx-ph-in">
+          <p class="bx-ph-h">Home</p>
+          <div class="bx-ph-card"><span class="bx-muted">Next rent payment</span><b>£950.00</b><span class="bx-muted">Due 1 Oct</span><a>View rent history</a></div>
+          <div class="bx-ph-cta">Report a maintenance issue</div>
+          <p class="bx-ph-sub">Announcements</p>
+          <div class="bx-ph-card"><b style="font-size:13px">Boiler service next Tuesday</b><span class="bx-muted">An engineer will visit between 9 and 12.</span></div>
+          <div class="bx-ph-tabs"><span class="on">Home</span><span>Rent</span><span>Repairs</span><span>News</span><span>Me</span></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="fm-title">The rest of the workspace</h3>
+    <div class="feature-map">
+      <div><span class="mono">Setup</span><b>Four-step checklist</b><p>New workspaces open on a checklist: set up your profile, activate Bethy, add your first property, add your first tenant. It disappears once you're done.</p></div>
+      <div><span class="mono">Properties</span><b>Import a listing</b><p>Add properties and units by hand, or import an existing listing from OpenRent, Rightmove or SpareRoom to skip the typing.</p></div>
+      <div><span class="mono">Tenants</span><b>Rent and risk</b><p>Tenant records with invites, a rent schedule, rent invoices marked paid or pending, and an "at risk" status that feeds Ask Bethy's suggestions.</p></div>
+      <div><span class="mono">Inbox</span><b>One place for messages</b><p>An inbox with a message list, preview pane and compose, alongside a WhatsApp channel Bethy can answer on.</p></div>
+      <div><span class="mono">Calendar</span><b>Viewings and meetings</b><p>A calendar for viewings and repairs, meetings, and project tasks with their own detail pages.</p></div>
+      <div><span class="mono">Reports</span><b>Portfolio reporting</b><p>Stats cards, revenue and task charts, project health and a team breakdown, with an export option for owners and accountants.</p></div>
+      <div><span class="mono">Team</span><b>Roles and permissions</b><p>Invite colleagues as Owner, Admin or Viewer. Row-level security means each workspace only ever sees its own data.</p></div>
+      <div><span class="mono">Settings</span><b>Workspace, security and billing</b><p>Profile, workspace, security, billing and appearance settings, including a full dark mode, with integrations for Xero, GoCardless and the EPC Register.</p></div>
     </div>
   </div></section>
 
   <section class="case-sec"><div class="wrap">
-    <h2>How a 10pm call becomes an approved job</h2>
-    <p class="intro">The system behind the promise. The transcript and ticket below are illustrations I drew for this page, built in the dashboard's own colours.</p>
+    <h2>Behind the phone line</h2>
+    <p class="intro">What happens between a tenant dialling and a request landing on the board.</p>
     <div class="stage">
       <span class="stage-cap">Call pipeline</span>
       <ol class="flow">
@@ -774,23 +988,8 @@ Idempotency-Key: <span class="v">order-8812</span>
         <li class="hot"><b>Context loads</b><span>Agent name, tone and a portfolio summary become the system prompt.</span></li>
         <li class="hot"><b>Bethy talks</b><span>Deepgram hears, Groq reasons, Deepgram speaks back in real time.</span></li>
         <li><b>Call is logged</b><span>The transcript posts back to the dashboard for review.</span></li>
-        <li><b>Landlord approves</b><span>A triaged job and matched trade, one tap to approve the cost.</span></li>
+        <li><b>Request is created</b><span>It lands on the board as Reported and scouting begins.</span></li>
       </ol>
-      <div class="two" style="margin-top:30px">
-        <div class="transcript" aria-label="Illustrative call transcript">
-          <div class="bub t"><small>Tenant · 22:14</small>Hi, there's water coming through the kitchen ceiling at Flat 3.</div>
-          <div class="bub a"><small>Bethy</small>Thanks, Priya. Is it dripping steadily, and can you reach the stopcock under the sink?</div>
-          <div class="bub t"><small>Tenant</small>Steady drip. I've turned it off now.</div>
-          <div class="bub a"><small>Bethy</small>Good. I've logged this as urgent and I'm lining up a plumber for the morning.</div>
-        </div>
-        <div class="ticket">
-          <div class="row"><b>Leak through kitchen ceiling</b><span class="tk-pill u">Urgent</span></div>
-          <div class="row" style="font-size:12.5px;color:#4B5563"><span>14 Alder Road · Flat 3</span><span class="tk-pill c">Plumbing</span></div>
-          <div class="tl"><div>22:14 Reported by phone, handled by Bethy</div><div>22:16 Triaged: plumbing, urgent</div><div>22:17 Matched: 2 plumbers available tomorrow</div></div>
-          <div class="row" style="font-size:13px"><span>Quote · first available, 8:30 AM</span><b style="font-size:15px">£145</b></div>
-          <div class="approve"><span class="y">Approve &amp; book</span><span class="n2">Ask for another quote</span></div>
-        </div>
-      </div>
     </div>
   </div></section>
 
@@ -799,10 +998,10 @@ Idempotency-Key: <span class="v">order-8812</span>
     <p class="intro">Where the product draws its lines, and why.</p>
     <ul class="decisions">
       <li><b>Human in the loop on money</b><span>The AI can answer, triage, source and schedule on its own, but spending the landlord's money always needs one explicit approval. That boundary is what makes an autonomous agent feel trustworthy.</span></li>
-      <li><b>Grounded answers only</b><span>Ask Bethy answers "What needs my approval right now?" from workspace data, never from the model's imagination. When the data isn't there, it says so.</span></li>
-      <li><b>A voice with a personality setting</b><span>Each workspace sets the agent's name and tone, so a boutique letting agent and a large management company can each sound like themselves on the phone.</span></li>
-      <li><b>Tenants get their own app</b><span>Reporting a repair with photos, seeing rent invoices and reading announcements are different jobs from running a portfolio, so tenants got their own lighter mobile app with native glass effects.</span></li>
-      <li><b>Try it before you sign up</b><span>The site's "Talk to Bethy" button starts a live voice call in the browser through Vapi, so a landlord can hear the product before booking a demo.</span></li>
+      <li><b>Show the agent's working</b><span>Every step Bethy takes is written into the request timeline in plain sentences, so the landlord can check the reasoning instead of trusting a black box.</span></li>
+      <li><b>Grounded answers only</b><span>Ask Bethy answers from workspace data, never from the model's imagination. When the data isn't there, it says so.</span></li>
+      <li><b>No new phone contract</b><span>Carrier forwarding codes let landlords keep their existing number and phone. The setup flow shows the exact code to dial.</span></li>
+      <li><b>Separate apps for separate jobs</b><span>Tenants report and pay; landlords run the portfolio. Two apps keep each one simple.</span></li>
     </ul>
   </div></section>
 
@@ -814,9 +1013,7 @@ Idempotency-Key: <span class="v">order-8812</span>
       <p>Integrations with Xero, GoCardless and the EPC Register, listing import from OpenRent, Rightmove and SpareRoom, WhatsApp webhooks and phone-number provisioning.</p>
     </div>
     <div class="prose">
-      <h3>Brand &amp; marketing surface</h3>
-      <p>The site covers pricing, a product tour, solutions by audience, trust and security, and legal pages. Motion uses Framer Motion and Lenis smooth scrolling with a custom cursor, and every page has a generated Open Graph image and a sitemap entry. I also designed Bethy's transactional email templates.</p>
-      <h3 style="margin-top:28px">System</h3>
+      <h3>System</h3>
       <div class="swatches">
         <div class="sw"><i style="background:#2563EB"></i><span><b>brand.blue</b>#2563EB</span></div>
         <div class="sw"><i style="background:#EFF6FF"></i><span><b>brand.light</b>#EFF6FF</span></div>
@@ -824,6 +1021,18 @@ Idempotency-Key: <span class="v">order-8812</span>
         <div class="sw"><i style="background:#00B69B"></i><span><b>success</b>#00B69B</span></div>
         <div class="sw"><i style="background:#F93C65"></i><span><b>danger</b>#F93C65</span></div>
       </div>
+      <p style="margin-top:16px">Pipeline stages use their own scale: grey, blue, amber, violet and emerald, each with a light and dark-mode variant.</p>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>The marketing site</h2>
+    <p class="intro">A Next.js site with Framer Motion, Lenis smooth scrolling and a live "Talk to Bethy" voice demo in the browser.</p>
+    <div class="thumbs">
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · hero</span></div><img src="img/bt-hero.jpg" alt="Bethy marketing hero" loading="lazy"></div></button><figcaption><b>Hero</b>"Meet Bethy" with a live voice demo button.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · features</span></div><img src="img/bt-cards.jpg" alt="Bethy feature cards" loading="lazy"></div></button><figcaption><b>What it does</b>A photographic bento of three promises.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · how it works</span></div><img src="img/bt-flow.jpg" alt="Bethy how it works" loading="lazy"></div></button><figcaption><b>How it works</b>From a ringing phone to a finished repair.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>dashboard · sign in</span></div><img src="img/bt-signin.jpg" alt="Bethy dashboard sign-in" loading="lazy"></div></button><figcaption><b>Dashboard sign-in</b>Value proposition on blue, focused form on black.</figcaption></figure>
     </div>
   </div></section>
 
