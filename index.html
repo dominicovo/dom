@@ -1,0 +1,924 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Dominic Eburuoh, design engineer. Case studies for GymBuddy, Billery and BethyAI.">
+<meta property="og:title" content="Dominic Eburuoh · Design Engineer">
+<meta property="og:description" content="Case studies for GymBuddy, Billery and BethyAI.">
+<style>html{-webkit-text-size-adjust:100%}body{margin:0}</style>
+<title>Dominic Eburuoh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#ECEEF1; --surface:#F8F9FB; --sunk:#E2E5EA;
+  --ink:#13161B; --ink-2:#3A3F48; --muted:#5E6470; --faint:#8A909B;
+  --rule:#CCD1D8; --rule-2:#B7BDC6;
+  --red:#D42A63; --red-soft:rgba(212,42,99,.10); --red-line:rgba(212,42,99,.55);
+  --display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body:"Hanken Grotesk", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --maxw:1180px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0E1014; --surface:#161920; --sunk:#1D2129;
+    --ink:#E9EBEF; --ink-2:#C4C8D0; --muted:#949AA6; --faint:#6D7380;
+    --rule:#2A2F38; --rule-2:#3A404B;
+    --red:#FF5E93; --red-soft:rgba(255,94,147,.12); --red-line:rgba(255,94,147,.55);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0E1014; --surface:#161920; --sunk:#1D2129;
+  --ink:#E9EBEF; --ink-2:#C4C8D0; --muted:#949AA6; --faint:#6D7380;
+  --rule:#2A2F38; --rule-2:#3A404B;
+  --red:#FF5E93; --red-soft:rgba(255,94,147,.12); --red-line:rgba(255,94,147,.55);
+}
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;
+  background-image:linear-gradient(var(--rule) 1px,transparent 1px),linear-gradient(90deg,var(--rule) 1px,transparent 1px);
+  background-size:48px 48px;background-position:-1px -1px;background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;background:var(--ground);opacity:.86;pointer-events:none;z-index:-1}
+a{color:inherit;text-decoration-color:var(--red-line);text-underline-offset:3px}
+a:hover{color:var(--red)}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:2px}
+img{display:block;max-width:100%;height:auto}
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.04em}
+.label{font-family:var(--mono);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3,h4{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.02em}
+p{margin:0}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:-.01em;text-decoration:none}
+.brand span{color:var(--red)}
+.nav{display:flex;gap:20px;flex-wrap:wrap}
+.nav a{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--red)}
+@media (max-width:640px){.nav{gap:12px}.nav a.opt{display:none}}
+
+/* ---------- hero ---------- */
+.hero{padding-block:clamp(56px,9vw,112px) clamp(40px,6vw,72px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:48px;align-items:end}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr}}
+.spec{position:relative;display:inline-block;padding:22px 0 30px}
+.hero h1{font-size:clamp(44px,7.6vw,96px);line-height:.95;font-weight:800;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;color:var(--red)}
+.redline{position:absolute;font-family:var(--mono);font-size:10.5px;color:var(--red);letter-spacing:.04em;white-space:nowrap;animation:draw .9s .2s both ease-out}
+.redline.top-dim{top:0;left:0;right:0;border-left:1px solid var(--red-line);border-right:1px solid var(--red-line);height:12px}
+.redline.top-dim::before{content:"";position:absolute;left:0;right:0;top:6px;border-top:1px dashed var(--red-line)}
+.redline.top-dim b{position:absolute;left:50%;top:-2px;transform:translateX(-50%);background:var(--ground);padding:0 6px;font-weight:500}
+.redline.base{bottom:8px;left:0;display:flex;gap:10px;align-items:center}
+.redline.base::before{content:"";width:28px;border-top:1px solid var(--red-line)}
+@keyframes draw{from{opacity:.25;clip-path:inset(0 60% 0 0)}to{opacity:1;clip-path:inset(0 0 0 0)}}
+.lede{margin-top:28px;max-width:62ch;font-size:clamp(18px,1.6vw,21px);color:var(--ink-2);line-height:1.55}
+.lede strong{color:var(--ink);font-weight:600}
+.card-id{border:1px solid var(--rule-2);background:var(--surface);padding:20px;display:grid;gap:14px}
+.card-id dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 14px}
+.card-id dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);padding-top:2px}
+.card-id dd{margin:0;font-size:14.5px;line-height:1.45}
+.status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+.status i{width:8px;height:8px;border-radius:50%;background:#2FA36B;box-shadow:0 0 0 3px rgba(47,163,107,.18)}
+
+/* ---------- stat strip ---------- */
+.strip{border-block:1px solid var(--rule);background:var(--surface)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.strip div{padding:22px 20px;border-left:1px solid var(--rule)}
+.strip div:first-child{border-left:0;padding-left:0}
+.strip b{display:block;font-family:var(--display);font-size:clamp(26px,3vw,36px);font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.strip span{font-size:14px;color:var(--muted);line-height:1.4;display:block}
+@media (max-width:760px){.strip .wrap{grid-template-columns:1fr 1fr}.strip div:nth-child(3){border-left:0;padding-left:0}.strip div:nth-child(n+3){border-top:1px solid var(--rule)}}
+
+/* ---------- sections ---------- */
+section.block{padding-block:clamp(64px,8vw,104px)}
+.sec-head{display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px;margin-bottom:44px;align-items:start}
+.sec-head h2{font-size:clamp(32px,4.4vw,54px);line-height:1;font-weight:800}
+.sec-head p{margin-top:14px;max-width:60ch;color:var(--ink-2)}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr;gap:12px}}
+
+/* ---------- work index (home) ---------- */
+.work-list{display:grid;gap:28px}
+.work-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);background:var(--surface);border:1px solid var(--rule-2);text-decoration:none;color:inherit;transition:border-color .2s}
+.work-card:hover{border-color:var(--red-line);color:inherit}
+.work-card:hover .go{color:var(--red)}
+.work-card:hover .cover img{transform:scale(1.015)}
+.work-text{padding:clamp(22px,3vw,36px);display:grid;gap:14px;align-content:start}
+.work-text h3{font-size:clamp(36px,4.6vw,58px);line-height:.95;font-weight:800;letter-spacing:-.035em}
+.work-text p{color:var(--ink-2)}
+.work-text .chips{margin-top:4px}
+.go{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;margin-top:8px;color:var(--ink)}
+.cover{overflow:hidden;border-left:1px solid var(--rule);min-height:280px;display:flex;align-items:center;justify-content:center}
+.cover img{transition:transform .5s ease}
+.cover.gb{background:#08070C;gap:14px;padding:28px 20px 0;align-items:flex-end}
+.cover.gb img{width:30%;border-radius:18px 18px 0 0;border:1px solid #2c2a36;border-bottom:0}
+.cover.gb img:nth-child(2){width:33%}
+.cover.photo img{width:100%;height:100%;object-fit:cover;object-position:top left}
+@media (max-width:860px){.work-card{grid-template-columns:1fr}.cover{border-left:0;border-top:1px solid var(--rule)}}
+.work-card.soon{grid-template-columns:1fr;border-style:dashed;background:transparent}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-family:var(--mono);font-size:11.5px;padding:3px 8px;border:1px solid var(--rule-2);color:var(--ink-2);background:var(--ground);white-space:nowrap}
+.chip.hot{border-color:var(--red-line);color:var(--red);background:var(--red-soft)}
+
+/* ---------- case pages ---------- */
+.crumbs{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:28px 0}
+.crumbs a{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--muted)}
+.crumbs a:hover{color:var(--red)}
+.case-hero{padding-block:clamp(36px,6vw,72px) 36px}
+.case-hero h1{font-size:clamp(54px,10vw,132px);line-height:.9;font-weight:800;letter-spacing:-.045em;margin-top:14px}
+.case-hero .tag{font-size:clamp(19px,2vw,25px);color:var(--ink-2);margin-top:20px;max-width:40ch;line-height:1.4}
+.facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-block:1px solid var(--rule-2);background:var(--surface)}
+.facts > div{padding:20px;border-left:1px solid var(--rule)}
+.facts > div:first-child{border-left:0}
+.facts h4{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:500;margin-bottom:8px}
+.facts ul{list-style:none;margin:0;padding:0;display:grid;gap:3px;font-size:14.5px;line-height:1.4}
+@media (max-width:900px){.facts{grid-template-columns:1fr 1fr}.facts > div:nth-child(3){border-left:0}.facts > div:nth-child(n+3){border-top:1px solid var(--rule)}}
+@media (max-width:520px){.facts{grid-template-columns:1fr}.facts > div{border-left:0;border-top:1px solid var(--rule)}.facts > div:first-child{border-top:0}}
+.case-sec{padding-block:clamp(48px,6vw,80px);border-bottom:1px solid var(--rule)}
+.case-sec:last-of-type{border-bottom:0}
+.case-sec > .wrap > h2{font-size:clamp(28px,3.6vw,44px);line-height:1.02;font-weight:800;margin-bottom:10px}
+.case-sec > .wrap > .intro{max-width:64ch;color:var(--ink-2);margin-bottom:36px}
+.prose{max-width:66ch;color:var(--ink-2)}
+.prose h3{font-size:24px;font-weight:600;letter-spacing:-.01em;margin-bottom:10px;color:var(--ink)}
+.prose p + p{margin-top:12px}
+.prose strong{color:var(--ink);font-weight:600}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media (max-width:760px){.two{grid-template-columns:1fr;gap:28px}}
+
+/* screenshots */
+.phones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,40px) clamp(16px,2.6vw,32px)}
+@media (max-width:860px){.phones{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:460px){.phones{grid-template-columns:1fr}}
+.phones.small{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:860px){.phones.small{grid-template-columns:repeat(2,minmax(0,1fr))}}
+figure{margin:0}
+.shot{display:grid;gap:14px;align-content:start}
+.shot button{all:unset;cursor:zoom-in;display:block}
+.shot button:focus-visible{outline:2px solid var(--red);outline-offset:4px}
+.phone-frame{border-radius:clamp(22px,3vw,34px);overflow:hidden;border:1px solid var(--rule-2);background:#08070C;box-shadow:0 30px 50px -34px rgba(10,8,20,.55);max-width:320px;margin-inline:auto}
+.phones.small .phone-frame{border-radius:20px}
+.shot figcaption{font-size:14.5px;line-height:1.5;color:var(--ink-2)}
+.shot figcaption b{display:block;font-family:var(--display);font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--ink);margin-bottom:4px}
+.shot figcaption .mono{color:var(--red);display:block;margin-bottom:6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.browser{border:1px solid var(--rule-2);background:var(--surface);box-shadow:0 30px 50px -36px rgba(10,12,20,.45);overflow:hidden;border-radius:10px}
+.browser .bar{display:flex;align-items:center;gap:6px;padding:9px 12px;border-bottom:1px solid var(--rule);background:var(--sunk)}
+.browser .bar i{width:9px;height:9px;border-radius:50%;background:var(--rule-2)}
+.browser .bar span{margin-left:10px;font-family:var(--mono);font-size:11px;color:var(--faint);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.web-list{display:grid;gap:clamp(40px,5vw,64px)}
+.web-row{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:clamp(20px,3vw,40px);align-items:center}
+.web-row:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.7fr)}
+.web-row:nth-child(even) .browser-wrap{order:2}
+@media (max-width:860px){.web-row,.web-row:nth-child(even){grid-template-columns:1fr}.web-row:nth-child(even) .browser-wrap{order:0}}
+.web-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,40px)}
+@media (max-width:760px){.web-grid{grid-template-columns:1fr}}
+.note{font-family:var(--mono);font-size:11.5px;color:var(--faint);margin-top:28px;letter-spacing:.02em}
+
+.decisions{list-style:none;margin:0;padding:0;display:grid;border-top:1px solid var(--rule)}
+.decisions li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:18px 0;border-bottom:1px solid var(--rule)}
+.decisions b{font-family:var(--display);font-weight:600;font-size:17px;line-height:1.3}
+.decisions span{color:var(--ink-2);font-size:15.5px}
+@media (max-width:640px){.decisions li{grid-template-columns:1fr;gap:4px}}
+.swatches{display:flex;flex-wrap:wrap;gap:10px;margin-top:6px}
+.sw{display:grid;gap:6px;width:96px}
+.sw i{display:block;height:48px;border:1px solid var(--rule-2)}
+.sw span{font-family:var(--mono);font-size:10.5px;line-height:1.3;color:var(--muted)}
+.sw span b{display:block;color:var(--ink);font-weight:500}
+.code{background:#0F1320;color:#D5DAE6;font-family:var(--mono);font-size:12.5px;line-height:1.65;padding:18px;overflow-x:auto;border:1px solid #1E2433;margin:0}
+.code .k{color:#8FB8FF}.code .s{color:#9FE0B5}.code .c{color:#6C7590}.code .v{color:#FFC98B}
+code{font-family:var(--mono);font-size:.88em}
+
+/* Bethy flow + illustrations */
+.stage{background:var(--sunk);border:1px solid var(--rule);padding:clamp(18px,3vw,36px);position:relative}
+.stage-cap{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:22px}
+.flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));margin:0;padding:12px 0 0;counter-reset:st}
+.flow li{list-style:none;position:relative;padding:14px 14px 14px 0;border-top:2px solid var(--rule-2)}
+.flow li::before{counter-increment:st;content:counter(st,decimal-leading-zero);position:absolute;top:-11px;left:0;background:var(--sunk);padding-right:8px;font-family:var(--mono);font-size:11px;color:var(--red)}
+.flow li.hot{border-top-color:#2563EB}
+.flow b{display:block;font-family:var(--display);font-weight:600;font-size:15px;line-height:1.25;margin-top:6px}
+.flow span{display:block;font-size:13px;color:var(--muted);line-height:1.4;margin-top:4px}
+@media (max-width:900px){.flow{grid-template-columns:1fr 1fr 1fr;row-gap:22px}}
+@media (max-width:560px){.flow{grid-template-columns:1fr}}
+.ticket{background:#fff;color:#0A0A0B;border:1px solid #E5E7EB;padding:16px;display:grid;gap:10px;font-size:13.5px;box-shadow:0 20px 40px -28px rgba(10,10,11,.4)}
+.ticket .row{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.ticket b{font-family:var(--display);font-size:16px;letter-spacing:-.01em}
+.tk-pill{font-size:10.5px;font-weight:600;padding:3px 8px;border-radius:99px}
+.tk-pill.u{background:#FEE7EC;color:#C81E4B}.tk-pill.c{background:#EFF6FF;color:#2563EB}
+.tl{display:grid;gap:6px;border-left:2px solid #E5E7EB;padding-left:12px;margin-left:4px;font-size:12.5px;color:#4B5563}
+.tl div::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#2563EB;margin:0 8px 1px -17px;vertical-align:middle;box-shadow:0 0 0 3px #fff}
+.approve{display:flex;gap:8px}
+.approve span{flex:1;text-align:center;padding:9px;border-radius:8px;font-weight:600;font-size:13px}
+.approve .y{background:#2563EB;color:#fff}.approve .n2{border:1px solid #D1D5DB;color:#2C2C30}
+.transcript{display:grid;gap:8px;font-size:13.5px;align-content:start}
+.bub{max-width:88%;padding:9px 12px;border-radius:14px;line-height:1.4}
+.bub.t{background:var(--surface);border:1px solid var(--rule-2);justify-self:start;border-bottom-left-radius:4px}
+.bub.a{background:#2563EB;color:#fff;justify-self:end;border-bottom-right-radius:4px}
+.bub small{display:block;font-family:var(--mono);font-size:10px;opacity:.7;margin-bottom:2px}
+
+.next{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;padding:clamp(28px,4vw,48px);background:var(--surface);border:1px solid var(--rule-2);text-decoration:none;color:inherit}
+.next:hover{border-color:var(--red-line);color:inherit}
+.next h3{font-size:clamp(34px,5vw,64px);line-height:.95;font-weight:800;letter-spacing:-.035em;margin-top:8px}
+.next .go{font-size:28px;margin:0}
+.next:hover .go{color:var(--red)}
+
+/* ---------- capabilities ---------- */
+.filter{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;align-items:center}
+.filter button{font:inherit;font-family:var(--mono);font-size:12px;letter-spacing:.04em;padding:7px 12px;border:1px solid var(--rule-2);background:var(--surface);color:var(--ink-2);cursor:pointer}
+.filter button[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.filter .legend{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.filter .legend i{width:8px;height:8px;background:var(--red);display:inline-block}
+@media (max-width:640px){.filter .legend{margin-left:0;width:100%}}
+.cap-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));border-top:1px solid var(--rule-2);border-left:1px solid var(--rule-2)}
+@media (max-width:420px){.cap-grid{grid-template-columns:1fr}}
+.cap{border-right:1px solid var(--rule-2);border-bottom:1px solid var(--rule-2);background:var(--surface);padding:22px}
+.cap header{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:6px}
+.cap h3{font-size:21px;font-weight:600;letter-spacing:-.01em}
+.cap header .mono{color:var(--faint);font-variant-numeric:tabular-nums}
+.cap > p{font-size:14px;color:var(--muted);margin-bottom:14px;line-height:1.45}
+.cap ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.cap li{font-size:13.5px;padding:3px 9px;border:1px solid var(--rule);background:var(--ground);color:var(--ink-2);line-height:1.45}
+.cap li.u{border-color:var(--red-line);color:var(--ink)}
+.cap li.u::before{content:"";display:inline-block;width:6px;height:6px;background:var(--red);margin-right:7px;vertical-align:1px}
+.cap-grid.only-used li:not(.u){display:none}
+
+/* ---------- industries ---------- */
+.ind{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));border-top:1px solid var(--rule-2)}
+.ind div{padding:20px 20px 20px 0;border-bottom:1px solid var(--rule)}
+.ind b{font-family:var(--display);font-size:20px;font-weight:600;letter-spacing:-.01em;display:block;line-height:1.2}
+.ind span{display:block;font-size:14.5px;color:var(--muted);margin-top:6px;line-height:1.45}
+.ind em{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--red);display:block;margin-top:8px;letter-spacing:.04em}
+.ind .soon em{color:var(--faint)}
+
+/* ---------- process ---------- */
+.proc{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--ink)}
+.proc div{padding:18px 18px 18px 0}
+.proc .mono{color:var(--red)}
+.proc b{display:block;font-family:var(--display);font-size:19px;font-weight:600;margin:6px 0}
+.proc span{font-size:14.5px;color:var(--ink-2);line-height:1.5;display:block}
+@media (max-width:900px){.proc{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.proc{grid-template-columns:1fr}}
+
+/* ---------- footer ---------- */
+.foot{border-top:1px solid var(--rule-2);background:var(--surface)}
+.foot .wrap{padding-block:56px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px}
+.foot h2{font-size:clamp(34px,5vw,60px);line-height:1;font-weight:800;letter-spacing:-.03em}
+.foot h2 em{font-style:normal;color:var(--red)}
+.foot ul{list-style:none;padding:0;margin:0;display:grid;border-top:1px solid var(--rule)}
+.foot li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.foot li span{font-family:var(--mono);font-size:12px;color:var(--faint)}
+@media (max-width:760px){.foot .wrap{grid-template-columns:1fr}}
+.colophon{font-family:var(--mono);font-size:11px;color:var(--faint);padding-block:18px;border-top:1px solid var(--rule)}
+
+/* ---------- lightbox ---------- */
+dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1400px);max-height:94vh}
+dialog.lb::backdrop{background:rgba(8,9,12,.86)}
+dialog.lb img{max-height:88vh;width:auto;margin:0 auto;border-radius:6px}
+dialog.lb p{color:#E9EBEF;font-family:var(--mono);font-size:12px;text-align:center;margin-top:10px}
+dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;border:0;border-radius:99px;width:38px;height:38px;font-size:20px;cursor:pointer}
+
+.view[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#home">Dominic Eburuoh<span>.</span></a>
+    <nav class="nav" aria-label="Pages">
+      <a href="#gymbuddy" data-nav="gymbuddy">GymBuddy</a>
+      <a href="#billery" data-nav="billery">Billery</a>
+      <a href="#bethy" data-nav="bethy">BethyAI</a>
+      <a href="#capabilities" class="opt">Capabilities</a>
+      <a href="#contact" class="opt">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- =====================================================================
+     HOME
+     ===================================================================== -->
+<main class="view" data-view="home" id="home">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="label">Design Engineer · Product Designer · Full-stack builder</p>
+        <div class="spec">
+          <span class="redline top-dim" aria-hidden="true"><b>Bricolage 800 · −3.5% tracking</b></span>
+          <h1>I design the interface, then I <em>ship&nbsp;it</em>.</h1>
+          <span class="redline base" aria-hidden="true">baseline · 8pt grid · tokens → code</span>
+        </div>
+        <p class="lede">I'm a design engineer who takes products from a blank Figma frame to the App Store. I own the whole surface: <strong>the research, the flows, the visual system, the React and Swift that render it, and the database rules underneath.</strong> Recent work spans fitness, invoicing and property management, with AI and real-time voice running through most of it.</p>
+      </div>
+      <aside class="card-id" aria-label="At a glance">
+        <span class="status"><i></i>Open to design engineering roles &amp; contracts</span>
+        <dl>
+          <dt>Focus</dt><dd>Design systems, native mobile, AI product UX</dd>
+          <dt>Platforms</dt><dd>iOS, Android, web, PWA, voice</dd>
+          <dt>Core stack</dt><dd>Figma, React, Next.js, React Native/Expo, SwiftUI, Supabase</dd>
+          <dt>Based</dt><dd>United Kingdom · remote-friendly</dd>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <div class="strip">
+    <div class="wrap">
+      <div><b>3</b><span>products designed and built end to end</span></div>
+      <div><b>11</b><span>codebases across web, iOS, Android and backend</span></div>
+      <div><b>10</b><span>industries and domains shipped into</span></div>
+      <div><b>1</b><span>person across design, front end, native and data</span></div>
+    </div>
+  </div>
+
+  <section class="block" id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Selected work</p>
+        <div>
+          <h2>Three products, three industries, one pair of hands.</h2>
+          <p>Each project has its own page with the real screens, the design decisions behind them, and the engineering that made them work.</p>
+        </div>
+      </div>
+      <div class="work-list">
+        <a class="work-card" href="#gymbuddy">
+          <div class="work-text">
+            <p class="label">Health &amp; Fitness · Digital wellbeing</p>
+            <h3>GymBuddy</h3>
+            <p>An iPhone app that locks your most distracting apps on gym days until you check in at the gym with a photo. Pair with a buddy to keep each other honest.</p>
+            <div class="chips"><span class="chip hot">iOS</span><span class="chip">Expo</span><span class="chip">Swift</span><span class="chip">Screen Time API</span><span class="chip">Vision</span><span class="chip">Supabase</span></div>
+            <span class="go">Read the case study →</span>
+          </div>
+          <div class="cover gb" aria-hidden="true">
+            <img src="img/gb-buddies.jpg" alt="" loading="lazy">
+            <img src="img/gb-locked.jpg" alt="" loading="lazy">
+            <img src="img/gb-profile.jpg" alt="" loading="lazy">
+          </div>
+        </a>
+        <a class="work-card" href="#billery">
+          <div class="work-text">
+            <p class="label">Fintech · Invoicing · Developer API</p>
+            <h3>Billery</h3>
+            <p>Describe the work in a sentence, or say it out loud, and get a branded invoice ready to send. Web app, PWA, native iOS and a public API.</p>
+            <div class="chips"><span class="chip hot">Next.js 16</span><span class="chip">Prisma</span><span class="chip">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">SwiftUI</span></div>
+            <span class="go">Read the case study →</span>
+          </div>
+          <div class="cover photo" aria-hidden="true"><img src="img/bl-hero.jpg" alt="" loading="lazy"></div>
+        </a>
+        <a class="work-card" href="#bethy">
+          <div class="work-text">
+            <p class="label">PropTech · AI &amp; voice · B2B SaaS</p>
+            <h3>BethyAI</h3>
+            <p>An AI property manager for landlords and letting agents. It answers the phone, triages maintenance, finds a tradesperson and only asks you to approve the cost.</p>
+            <div class="chips"><span class="chip hot">Real-time voice</span><span class="chip">Twilio</span><span class="chip">Deepgram</span><span class="chip">Supabase RLS</span><span class="chip">Expo</span></div>
+            <span class="go">Read the case study →</span>
+          </div>
+          <div class="cover photo" aria-hidden="true"><img src="img/bt-hero.jpg" alt="" loading="lazy"></div>
+        </a>
+        <div class="work-card soon">
+          <div class="work-text">
+            <p class="label">More industries</p>
+            <p>Further case studies from other industries are being written up and will appear here.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="capabilities" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Capabilities</p>
+        <div>
+          <h2>The full toolkit, from research to release.</h2>
+          <p>Design engineering lives in the gap between the mockup and the merge. These are the skills, tools and frameworks I use across that gap. Items marked in red appear in the case studies.</p>
+        </div>
+      </div>
+      <div class="filter" role="group" aria-label="Filter capabilities">
+        <button type="button" id="f-all" aria-pressed="true">Show everything</button>
+        <button type="button" id="f-used" aria-pressed="false">Only what's in the case studies</button>
+        <span class="legend"><i></i>Used in shipped work</span>
+      </div>
+      <div class="cap-grid" id="caps"></div>
+    </div>
+  </section>
+
+  <section class="block" id="industries" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Industries</p>
+        <div>
+          <h2>Where the work has landed.</h2>
+          <p>Each industry has its own regulations, vocabulary and expectations. Learning those quickly is part of the job.</p>
+        </div>
+      </div>
+      <div class="ind">
+        <div><b>Health &amp; Fitness</b><span>Habit formation, streaks, accountability and gym check-ins.</span><em>GymBuddy</em></div>
+        <div><b>Digital wellbeing</b><span>Screen Time, app blocking and designing friction that helps.</span><em>GymBuddy</em></div>
+        <div><b>Consumer social</b><span>Buddy pairing, nudges, cheers and shared progress.</span><em>GymBuddy</em></div>
+        <div><b>Fintech &amp; invoicing</b><span>Invoices, quotes, receipts, VAT details, multi-currency and payment status.</span><em>Billery</em></div>
+        <div><b>Small business &amp; sole traders</b><span>Studios, clinics, tutors, kitchens, market stalls and trades.</span><em>Billery</em></div>
+        <div><b>Developer platforms &amp; APIs</b><span>API keys, test mode, idempotency, rate limits and webhooks.</span><em>Billery</em></div>
+        <div><b>PropTech &amp; real estate</b><span>Landlords, letting agents, tenancies, EPC data and listing portals.</span><em>BethyAI</em></div>
+        <div><b>AI &amp; conversational voice</b><span>Phone agents, speech-to-text, LLM tool calling and grounded assistants.</span><em>BethyAI · Billery</em></div>
+        <div><b>B2B SaaS</b><span>Multi-tenant workspaces, teams, roles, billing and reporting.</span><em>BethyAI · Billery</em></div>
+        <div><b>Trades &amp; field services</b><span>Job notes from calls and site visits, maintenance and scheduling.</span><em>BethyAI</em></div>
+        <div class="soon"><b>More on the way</b><span>Case studies from other industries are being written up now.</span><em>Coming soon</em></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="process" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">How I work</p>
+        <div>
+          <h2>One loop, no handoff.</h2>
+          <p>Because I design and build, the decisions made in Figma survive into production and the constraints found in code flow back into the design the same day.</p>
+        </div>
+      </div>
+      <div class="proc">
+        <div><span class="mono">Stage 1</span><b>Frame</b><span>Talk to the people with the problem. Name the one job the product must do and what success looks like.</span></div>
+        <div><span class="mono">Stage 2</span><b>Flow</b><span>Map journeys, states and edge cases, including empty, error, loading, locked and offline, before any pixels.</span></div>
+        <div><span class="mono">Stage 3</span><b>System</b><span>Define tokens for colour, type, spacing and radius, with semantic names both design and code share.</span></div>
+        <div><span class="mono">Stage 4</span><b>Build</b><span>Prototype in the real stack early. Tune motion, haptics and copy on a device, not a canvas.</span></div>
+        <div><span class="mono">Stage 5</span><b>Ship</b><span>Store listings, marketing sites, analytics and docs. Then watch real use and loop back to stage 1.</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- =====================================================================
+     GYMBUDDY
+     ===================================================================== -->
+<main class="view" data-view="gymbuddy" hidden>
+  <div class="wrap crumbs"><a href="#home">← All work</a><span class="mono" style="color:var(--faint)">Case study 1 of 3</span></div>
+  <section class="wrap case-hero">
+    <p class="label">Health &amp; Fitness · Digital wellbeing · Consumer social</p>
+    <h1>GymBuddy</h1>
+    <p class="tag">An iPhone app that locks your most distracting apps on gym days until you check in at the gym with a photo.</p>
+  </section>
+  <div class="wrap"><div class="facts">
+    <div><h4>Role</h4><ul><li>Product design</li><li>Brand &amp; design system</li><li>React Native + native Swift</li><li>Backend &amp; App Store launch</li></ul></div>
+    <div><h4>Platforms</h4><ul><li>iOS 16.4+ (primary)</li><li>Android build target</li><li>Marketing site</li></ul></div>
+    <div><h4>Status</h4><ul><li>Build 14, App Store submission</li><li>2026</li><li><a href="https://www.gymbuddy.live" target="_blank" rel="noopener">gymbuddy.live ↗</a></li></ul></div>
+    <div><h4>Stack</h4><div class="chips"><span class="chip hot">Expo SDK 57</span><span class="chip">React Native</span><span class="chip">TypeScript</span><span class="chip hot">Screen Time API</span><span class="chip">Swift</span><span class="chip">Vision</span><span class="chip">MapKit</span><span class="chip">Supabase</span><span class="chip">Zustand</span></div></div>
+  </div></div>
+
+  <section class="case-sec"><div class="wrap two">
+    <div class="prose">
+      <h3>The problem</h3>
+      <p>People don't skip the gym because they lack a plan. They skip because Instagram, TikTok and YouTube are one tap away when it's time to leave. Reminder apps are easy to swipe away. Habit trackers only report the damage afterwards.</p>
+      <p>I wanted to put a <strong>real, system-level cost</strong> on skipping, remove it the moment you show up, and make it social enough that a friend notices too.</p>
+    </div>
+    <div class="prose">
+      <h3>What I built</h3>
+      <p>You pick the apps that pull you in, set gym days and a time window (say Mon, Wed and Fri, 6 AM to 8 PM), and those apps lock when the window opens. At the gym you snap a photo of the kit around you. <strong>The phone checks on-device that it looks like a gym</strong> and everything unlocks for the rest of the day.</p>
+      <p>Pair with a buddy using a 4-digit code or QR card and you see each other's check-ins and streaks, with nudges and cheers delivered as push notifications.</p>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>The app, screen by screen</h2>
+    <p class="intro">Captured from the current iOS build. The names, streaks and buddies are fictional demo data I built for App Store screenshots, generated relative to the current time so every screen agrees with the others.</p>
+    <div class="phones">
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame"><img src="img/gb-locked.jpg" alt="GymBuddy Today screen showing apps locked with 1 hour 20 minutes left in the window" loading="lazy"></div></button>
+        <figcaption><span class="mono">01 · Today, locked</span><b>One job on screen: get to the gym</b>On a gym day the hero card turns violet and says the apps are locked. A big condensed countdown shows the time left in the window, a progress bar shows how much of it has gone, and there is exactly one primary action: <em>I'm at the gym</em>. The week strip below counts gym days done.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame"><img src="img/gb-proof.jpg" alt="GymBuddy check-in camera screen asking for a gym photo" loading="lazy"></div></button>
+        <figcaption><span class="mono">02 · Check in</span><b>Proof, without the paperwork</b>A full-screen camera prompt with plain instructions: the rack, your kit, the view from the treadmill. The unlock button stays disabled until there is a photo. Apple's Vision framework classifies the photo on the phone and it is never uploaded.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame"><img src="img/gb-buddies.jpg" alt="GymBuddy Buddies screen with check-in summary, nudges and requests" loading="lazy"></div></button>
+        <figcaption><span class="mono">03 · Buddies</span><b>Who still needs to go today</b>A segmented bar splits the group into checked in (green), still to go (amber) and resting. Nudges from friends sit in a highlighted inbox, requests come next, and filter chips plus <em>Nudge all</em> make it quick to chase the whole group.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame"><img src="img/gb-profile.jpg" alt="GymBuddy Profile with streak tiles and a 12-week consistency grid" loading="lazy"></div></button>
+        <figcaption><span class="mono">04 · Profile</span><b>Progress you can read in a second</b>Four stat tiles (streak, best, this month, attendance) sit above a 12-week consistency grid. Violet is checked in, muted amber is missed and dark is a rest day, the same semantic colours used across the rest of the app.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame"><img src="img/gb-today.jpg" alt="GymBuddy Today screen on a rest day" loading="lazy"></div></button>
+        <figcaption><span class="mono">05 · Rest day</span><b>The same card, calmer</b>On a rest day nothing locks. The card drops its accent, counts down to tomorrow's lock instead, and says one line: <em>Nothing locks today. Recover well.</em> Rest is part of the plan, so the UI treats it that way.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="phone-frame"><img src="img/gb-auth.jpg" alt="GymBuddy sign-in screen with Apple and Google buttons" loading="lazy"></div></button>
+        <figcaption><span class="mono">06 · Sign in</span><b>One tap, and a privacy promise up front</b>Sign in with Apple or Google, new or returning, with no passwords or codes. The line under the buttons answers the obvious worry before anyone asks: GymBuddy never sees which apps you lock.</figcaption>
+      </figure>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>Design decisions</h2>
+    <p class="intro">The choices that shaped how the app looks and behaves.</p>
+    <ul class="decisions">
+      <li><b>Three semantic colours, nothing else</b><span>The whole app speaks in violet for locked, green for unlocked or checked in, and amber for needs attention. Every card, pill, border and background tint derives from those three, so you can read the state before you read a word.</span></li>
+      <li><b>A chosen dark neutral</b><span>Dark-only, on a violet-biased charcoal (#08070C to #24222E) so the greys sit with the brand purple instead of reading as stock grey. Dark text on the accent keeps buttons at AA contrast.</span></li>
+      <li><b>Strict, never stuck</b><span>No snooze button, but apps always unlock when the window ends. A short grace period gets you out the door, and strict mode blocks editing the schedule while you're locked. Firm enough to work, never a trap.</span></li>
+      <li><b>Privacy as a feature</b><span>Apple holds the locked-app list, so even the backend can't see it. The check-in photo is classified on the phone and never uploaded. Account deletion lives in Settings. These points went into the App Store copy as selling points.</span></li>
+      <li><b>Condensed numerals</b><span>Barlow Condensed for countdowns, streaks and dates borrows the look of gym clocks and scoreboards. Body text stays neutral and legible on an 8pt spacing grid.</span></li>
+    </ul>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>Design evolution: the first build</h2>
+    <p class="intro">The first complete build in early September 2026 was light, with a saturated indigo accent, and it covered the full flow from onboarding to pairing. The second pass moved to the dark system above: the same structure, but state colours carry the meaning and the accent is reserved for the locked state. These are real simulator captures from that first build.</p>
+    <div class="phones small">
+      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-apps.jpg" alt="First build: pick the apps to lock" loading="lazy"></div></button><figcaption><b>Pick your weaknesses</b>Onboarding step 1. Choose the apps that get locked. Apple keeps the list private.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-schedule.jpg" alt="First build: set gym days and lock window" loading="lazy"></div></button><figcaption><b>Set your schedule</b>Gym days as toggle pills, and the lock window set with steppers instead of a fiddly time wheel.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-perms.jpg" alt="First build: three permissions screen" loading="lazy"></div></button><figcaption><b>Three permissions</b>Screen Time, notifications and location, each with a single line on why it's needed.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-shield.jpg" alt="First build: custom iOS shield when opening a locked app" loading="lazy"></div></button><figcaption><b>The iOS shield</b>What you see when you open a locked app. Designed through a ShieldConfiguration extension: streak, distance to the gym and a buddy's check-in.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-settings.jpg" alt="First build: settings for strict mode, grace period and check-in" loading="lazy"></div></button><figcaption><b>Settings</b>Strict mode, grace period, check-in radius and what counts as proof, grouped by lock and check-in.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-paircard.jpg" alt="First build: shareable pair card with QR code" loading="lazy"></div></button><figcaption><b>Share your pair card</b>A QR card with your gym and schedule, shareable as a link, full-screen code or Apple Wallet pass.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-scan.jpg" alt="First build: scan a buddy's code" loading="lazy"></div></button><figcaption><b>Pair in person</b>Scan a buddy's QR or type their four digits on a large keypad.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-invite.jpg" alt="First build: web invite landing page" loading="lazy"></div></button><figcaption><b>Invite link</b>The web page a friend lands on from a link, showing the inviter's week before they install.</figcaption></figure>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap two">
+    <div class="prose">
+      <h3>Engineering highlights</h3>
+      <p><strong>Three native iOS extension targets</strong> sit alongside the React Native app: a DeviceActivityMonitor that locks and unlocks on schedule, and ShieldConfiguration and ShieldAction extensions that design the system screen you see when you tap a blocked app. They share state through an App Group.</p>
+      <p><strong>Two custom Expo native modules</strong> in Swift: <code>gym-vision</code> runs Apple's Vision image classifier on-device to confirm the photo looks like a gym, and <code>gym-search</code> uses MapKit local search filtered to fitness points of interest for onboarding.</p>
+      <p>A config plugin adapts the app to the UIScene lifecycle. Sign in with Apple and Google, universal links for pair invites, and push notifications for nudges all run on Supabase.</p>
+    </div>
+    <div class="prose">
+      <h3>Launch craft</h3>
+      <p>I wrote the full App Store listing within Apple's character limits (name, subtitle, 170-character promo text, 4,000-character description and keywords) and designed the App Store screenshot frames. The marketing site at gymbuddy.live reuses the app's exact colour values, so the product and its site read as one brand.</p>
+      <h3 style="margin-top:28px">System</h3>
+      <div class="swatches">
+        <div class="sw"><i style="background:#08070C"></i><span><b>background</b>#08070C</span></div>
+        <div class="sw"><i style="background:#1B1A23"></i><span><b>surfaceAlt</b>#1B1A23</span></div>
+        <div class="sw"><i style="background:#8B84F0"></i><span><b>accent</b>#8B84F0</span></div>
+        <div class="sw"><i style="background:#5FD08F"></i><span><b>success</b>#5FD08F</span></div>
+        <div class="sw"><i style="background:#F0B35B"></i><span><b>warning</b>#F0B35B</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <a class="next" href="#billery"><div><p class="label">Next case study</p><h3>Billery</h3></div><span class="go">→</span></a>
+  </div></section>
+</main>
+
+<!-- =====================================================================
+     BILLERY
+     ===================================================================== -->
+<main class="view" data-view="billery" hidden>
+  <div class="wrap crumbs"><a href="#home">← All work</a><span class="mono" style="color:var(--faint)">Case study 2 of 3</span></div>
+  <section class="wrap case-hero">
+    <p class="label">Fintech · Invoicing · Small business &amp; sole traders · Developer API</p>
+    <h1>Billery</h1>
+    <p class="tag">Describe the work in a sentence, or say it out loud, and get a branded invoice ready to send in under a minute.</p>
+  </section>
+  <div class="wrap"><div class="facts">
+    <div><h4>Role</h4><ul><li>Product &amp; UX design</li><li>Visual identity &amp; illustration</li><li>Full-stack engineering</li><li>Native iOS app</li><li>Public API design</li></ul></div>
+    <div><h4>Surfaces</h4><ul><li>Web app + installable PWA</li><li>Native SwiftUI iOS app</li><li>Customer share links &amp; PDFs</li><li>REST API + webhooks</li><li>Marketing site</li></ul></div>
+    <div><h4>Business model</h4><ul><li>Free to start</li><li>Pro at £10/month</li><li>No per-seat pricing</li></ul></div>
+    <div><h4>Stack</h4><div class="chips"><span class="chip hot">Next.js 16</span><span class="chip">React 19</span><span class="chip">Tailwind v4</span><span class="chip">Prisma 7</span><span class="chip">PostgreSQL</span><span class="chip">NextAuth</span><span class="chip hot">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">react-pdf</span><span class="chip">Zod</span><span class="chip hot">SwiftUI</span></div></div>
+  </div></div>
+
+  <section class="case-sec"><div class="wrap two">
+    <div class="prose">
+      <h3>The problem</h3>
+      <p>For studios, clinics, tutors, kitchens, market stalls and anyone working out of a van, invoicing is admin squeezed in after the actual job. Most tools are built for accountants: dense forms, per-seat pricing and a dozen settings before the first invoice goes out.</p>
+      <p>The bar I set: <strong>job done to invoice sent in three steps</strong>, on whatever device is in your hand.</p>
+    </div>
+    <div class="prose">
+      <h3>What I built</h3>
+      <p>Type or dictate what you did and Billery drafts itemised line items with quantities and prices, all editable before you create the invoice. It emails a branded PDF, gives you a share link your customer can open with no account, and tracks each document from draft to sent to paid, with overdue ones flagged.</p>
+      <p>Quotes convert to invoices in one click. Receipts, customers, your logo, VAT and company numbers and bank details are all handled.</p>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>The product story, on the page</h2>
+    <p class="intro">The marketing site is where the product's promise gets tested first, so I designed it section by section to answer the questions a sole trader actually asks. Captured from the current site.</p>
+    <div class="web-list">
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb class="shot" style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · home</span></div><img src="img/bl-hero.jpg" alt="Billery homepage hero: Billing that takes a sentence" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Hero</span><b>Show the whole product in one frame</b>The headline makes the promise ("Billing that takes a sentence") and the composition on the right proves it: a plain-English request, the assistant's reply, the drafted invoice card and a <em>paid</em> notification. You see the full loop before you scroll.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · features</span></div><img src="img/bl-features.jpg" alt="Billery features grid with nine features" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Features</span><b>Nine jobs, written as outcomes</b>Each tile names what you get ("Describe the work, get the invoice", "Quote it, then invoice it") rather than listing a feature. One icon style and one card shape keep a dense grid scannable.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · how it works</span></div><img src="img/bl-how.jpg" alt="Billery three steps: add a customer, describe the work, send or share" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">How it works</span><b>Three steps, three illustrations</b>Add a customer, describe the work, send or share. Spot illustrations recoloured to the brand blue make each step recognisable at a glance.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · developers</span></div><img src="img/bl-dev.jpg" alt="Billery developer section with API code sample" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Developers</span><b>An API pitched in plain English</b>For businesses that already have a booking form or shop. A real request sample sits beside three benefits (create documents, know when they're paid, build safely), with the customer-facing email preview underneath.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · who it's for</span></div><img src="img/bl-who.jpg" alt="Billery persona carousel: freelance designer, wedding photographer, private tutor" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Who it's for</span><b>Personas as example sentences</b>A carousel of real-sounding jobs (freelance designer, wedding photographer, private tutor), each with the sentence you'd actually say to invoice it.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · install</span></div><img src="img/bl-install.jpg" alt="Billery PWA install steps for iPhone, Android and desktop" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Install</span><b>An app without the app store</b>Billery installs as a PWA, so the site teaches the install itself: three short numbered recipes for iPhone, Android and desktop next to a phone showing the result.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · pricing</span></div><img src="img/bl-pricing.jpg" alt="Billery pricing: Free and Pro at £10 a month" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Pricing</span><b>One plan, plain maths</b>Free to start, then one price with no per-seat charges or add-ons. The Pro card inverts to white so the choice is obvious, and the page reads in five seconds.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery app · sign in</span></div><img src="img/bl-signin.jpg" alt="Billery app sign-in with product demo on the left" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">App · sign in</span><b>One form for new and returning users</b>The app's entry keeps selling while you sign in: the left half replays the invoice-in-a-sentence demo, the right half is a single email and password form that creates the account automatically if the email is new.</figcaption></figure>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>Where it started: Billery v1</h2>
+    <p class="intro">The first version (2025) was a cross-border billing tool for freelancers, with currency accounts in GBP, USD and NGN and payouts to a local bank. It was built with Next.js 13, Redux Toolkit and Bootstrap. I rebuilt the product around one idea, the invoice in a sentence, on Next.js 16, Prisma and Tailwind v4. Real screenshots from v1:</p>
+    <div class="web-grid">
+      <figure class="shot">
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery v1 · home</span></div><img src="img/bl-v1-dashboard.jpg" alt="Billery v1 dashboard with currency accounts and billed chart" loading="lazy"></div></button>
+        <figcaption><b>Currency accounts</b>Balances per currency as cards, a billed-per-month bar chart with the current month in solid brand blue, and recent bills alongside. Request bill and Send bill are the two primary actions.</figcaption>
+      </figure>
+      <figure class="shot">
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery v1 · overview</span></div><img src="img/bl-v1-overview.jpg" alt="Billery v1 overview with billed, paid, pending and overdue tiles" loading="lazy"></div></button>
+        <figcaption><b>Overview</b>Billed, paid, pending and overdue as colour-coded tiles, a billing chart, and a billing calculator that previews what you'll receive in your payout currency.</figcaption>
+      </figure>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>Design decisions</h2>
+    <p class="intro">What changed between the first version and the rebuild, and why the product works the way it does now.</p>
+    <ul class="decisions">
+      <li><b>AI drafts, the person decides</b><span>The model fills in the line items, but every field stays editable and nothing is sent until you press send. The AI is a faster keyboard, never an autopilot for someone's money.</span></li>
+      <li><b>Voice as a first-class input</b><span>Tap the mic and your words land in the description box. On a job site with dirty hands, talking is faster than typing.</span></li>
+      <li><b>Zero friction for the payer</b><span>Customers never sign up. They get a PDF by email or a share link that works on any device, with a download button built in.</span></li>
+      <li><b>Documents that match your paperwork</b><span>You choose exactly what prints: address, phone, VAT and company numbers, payment details and a custom footer. Brand it once and it appears on every PDF.</span></li>
+      <li><b>From dashboard-first to action-first</b><span>v1 opened on charts. The rebuild opens on the one thing people come to do, which is describing a job and sending the invoice. The numbers moved one level down.</span></li>
+    </ul>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap two">
+    <div class="prose">
+      <h3>Engineering highlights</h3>
+      <p><strong>An in-app assistant with real tools.</strong> The model can search and create customers, create invoices, quotes and receipts, and list recent documents through typed function calls, so its answers come from the account's actual data.</p>
+      <p><strong>A public REST API designed for developers.</strong> Create invoices, quotes and receipts from your own booking form or shop, with optional email delivery in the same request. Test keys validate and price exactly like live keys but write nothing and email nobody. Idempotency keys make retries safe, each key is rate limited, and <strong>signed webhooks</strong> report sent, paid and converted events.</p>
+      <p>Stripe subscriptions with a self-serve billing portal, NextAuth with password reset, and PDF rendering with react-pdf. A native <strong>SwiftUI iOS app</strong> uses Swift Charts for the dashboard, backed by a mobile API that mirrors the web app.</p>
+    </div>
+    <div>
+      <h3 style="font-size:24px;font-weight:600;margin-bottom:10px">Developer experience</h3>
+      <pre class="code"><span class="c"># Create and send an invoice</span>
+<span class="k">POST</span> /api/v1/invoices
+Authorization: Bearer <span class="v">blry_test_…</span>
+Idempotency-Key: <span class="v">order-8812</span>
+
+{
+  <span class="s">"customer"</span>: { <span class="s">"email"</span>: <span class="s">"sam@studio.co"</span> },
+  <span class="s">"items"</span>: [
+    { <span class="s">"description"</span>: <span class="s">"Brand refresh"</span>,
+      <span class="s">"quantity"</span>: <span class="v">2</span>, <span class="s">"unit_price"</span>: <span class="v">350</span> }
+  ],
+  <span class="s">"send_email"</span>: <span class="v">true</span>
+}</pre>
+      <h3 style="font-size:24px;font-weight:600;margin:28px 0 10px">Brand &amp; campaigns</h3>
+      <div style="display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center">
+        <button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><img src="img/bl-social-1.jpg" alt="Billery social post: 3 steps to get started with Billery" loading="lazy" style="border:1px solid var(--rule-2)"></button>
+        <p style="font-size:14.5px;color:var(--ink-2)">Brand assets and a launch social campaign ("3 steps to get started") designed alongside the product.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <a class="next" href="#bethy"><div><p class="label">Next case study</p><h3>BethyAI</h3></div><span class="go">→</span></a>
+  </div></section>
+</main>
+
+<!-- =====================================================================
+     BETHY
+     ===================================================================== -->
+<main class="view" data-view="bethy" hidden>
+  <div class="wrap crumbs"><a href="#home">← All work</a><span class="mono" style="color:var(--faint)">Case study 3 of 3</span></div>
+  <section class="wrap case-hero">
+    <p class="label">PropTech · Property management · AI &amp; voice · B2B SaaS</p>
+    <h1>BethyAI</h1>
+    <p class="tag">An AI property manager for landlords and letting agents. It answers the phone, triages maintenance, finds a tradesperson and only asks you to approve the cost.</p>
+  </section>
+  <div class="wrap"><div class="facts">
+    <div><h4>Role</h4><ul><li>Product strategy &amp; UX</li><li>Conversation &amp; voice design</li><li>Dashboard &amp; mobile UI</li><li>Real-time systems</li><li>Marketing site &amp; email</li></ul></div>
+    <div><h4>Surfaces</h4><ul><li>Landlord dashboard (web)</li><li>Tenant app (iOS/Android)</li><li>AI phone receptionist</li><li>WhatsApp channel</li><li>Marketing site with live voice demo</li></ul></div>
+    <div><h4>Market</h4><ul><li>UK landlords</li><li>Letting agents</li><li>Property management companies</li></ul></div>
+    <div><h4>Stack</h4><div class="chips"><span class="chip">Next.js</span><span class="chip hot">Supabase + RLS</span><span class="chip hot">Twilio Media Streams</span><span class="chip hot">Deepgram Voice Agent</span><span class="chip">Groq</span><span class="chip">WebSockets</span><span class="chip">Expo Router</span><span class="chip">GSAP</span><span class="chip">Framer Motion</span><span class="chip">Vapi</span></div></div>
+  </div></div>
+
+  <section class="case-sec"><div class="wrap two">
+    <div class="prose">
+      <h3>The problem</h3>
+      <p>Small landlords and letting agents run on phone calls. A tenant rings at 10pm about a leak, the call goes to voicemail, and the next morning goes on chasing plumbers, quotes and updates across WhatsApp, email and spreadsheets.</p>
+      <p>Most property software is a database with forms on top. It stores the mess but doesn't take any of the work off you.</p>
+    </div>
+    <div class="prose">
+      <h3>What I built</h3>
+      <p>Landlords forward their business number to a dedicated Bethy number, and <strong>every tenant call gets answered, day or night</strong>, by a voice agent that knows that landlord's portfolio. Reports are triaged by category and priority, matched to a tradesperson and scheduled. <strong>Nothing gets booked until the landlord approves the cost.</strong></p>
+      <p>Around that sits a full dashboard (properties, tenants, maintenance, inbox, calendar, tasks, reports, team and billing), a tenant mobile app, and <em>Ask Bethy</em>, an assistant that answers portfolio questions using only real workspace data.</p>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>Selling an AI employee</h2>
+    <p class="intro">Landlords are sceptical of software, and more sceptical of AI. The marketing site had to make an AI receptionist feel trustworthy and concrete. Captured from the current site.</p>
+    <div class="web-list">
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · home</span></div><img src="img/bt-hero.jpg" alt="Bethy homepage hero: Meet Bethy, Your Property Copilot" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Hero</span><b>Give the AI a face and a voice</b>"Meet Bethy" frames the product as a colleague rather than a tool. The primary button, <em>Talk to Bethy</em>, starts a live voice call in the browser, because the most convincing demo of a voice product is the voice. Integration names sit in a strip underneath.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · what it does</span></div><img src="img/bt-cards.jpg" alt="Bethy feature cards: answers calls, maintenance sourced, one home for your portfolio" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">What it does</span><b>Not just a phone line</b>A photographic bento grid with three promises: answers every tenant call, maintenance sourced and scheduled, and one home for your whole portfolio. Real-world imagery keeps an AI product grounded in bricks and boilers.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · how it works</span></div><img src="img/bt-flow.jpg" alt="Bethy three-step flow from ringing phone to finished repair" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">How it works</span><b>From a ringing phone to a finished repair</b>Three numbered steps on a zig-zag line: forward your number, Bethy answers and triages, you approve and Bethy executes. The third step is the trust moment, so it gets the check mark.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · integrations</span></div><img src="img/bt-integrations.jpg" alt="Bethy integrations grid: Xero, GoCardless, EPC Register, OpenRent, Rightmove" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Integrations</span><b>Plug into the tools you already use</b>Xero, GoCardless, the EPC Register, OpenRent and Rightmove, each with a mono caption saying what flows through it. The section switches to light so it reads as a calm, practical interlude.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · trust</span></div><img src="img/bt-trust.jpg" alt="Bethy trust section: your data stays yours" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Trust</span><b>Your data stays yours, your money stays with you</b>Three plain commitments backed by how the system works: your workspace is yours, data is encrypted in transit and at rest, and every workspace is isolated at the database level.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy · solutions</span></div><img src="img/bt-solutions.jpg" alt="Bethy solutions tabs by audience with call log" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Solutions</span><b>Built for how lettings actually works</b>Tabs for independent landlords, letting agents and management companies. Each shows a terminal-style log of an incoming call being triaged, which makes the automation feel inspectable.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>bethy dashboard · sign in</span></div><img src="img/bt-signin.jpg" alt="Bethy dashboard sign-in, split screen" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">Dashboard · sign in</span><b>The door to the workspace</b>A split screen: the value proposition on brand blue, and a focused sign-in on black with Google as an alternative and a 30-day remember-me for people who check in daily.</figcaption></figure>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>How a 10pm call becomes an approved job</h2>
+    <p class="intro">The system behind the promise. The transcript and ticket below are illustrations I drew for this page, built in the dashboard's own colours.</p>
+    <div class="stage">
+      <span class="stage-cap">Call pipeline</span>
+      <ol class="flow">
+        <li><b>Tenant calls</b><span>The forwarded number rings a Bethy line on Twilio.</span></li>
+        <li><b>Stream opens</b><span>TwiML points a media stream at the voice bridge over WebSocket.</span></li>
+        <li class="hot"><b>Context loads</b><span>Agent name, tone and a portfolio summary become the system prompt.</span></li>
+        <li class="hot"><b>Bethy talks</b><span>Deepgram hears, Groq reasons, Deepgram speaks back in real time.</span></li>
+        <li><b>Call is logged</b><span>The transcript posts back to the dashboard for review.</span></li>
+        <li><b>Landlord approves</b><span>A triaged job and matched trade, one tap to approve the cost.</span></li>
+      </ol>
+      <div class="two" style="margin-top:30px">
+        <div class="transcript" aria-label="Illustrative call transcript">
+          <div class="bub t"><small>Tenant · 22:14</small>Hi, there's water coming through the kitchen ceiling at Flat 3.</div>
+          <div class="bub a"><small>Bethy</small>Thanks, Priya. Is it dripping steadily, and can you reach the stopcock under the sink?</div>
+          <div class="bub t"><small>Tenant</small>Steady drip. I've turned it off now.</div>
+          <div class="bub a"><small>Bethy</small>Good. I've logged this as urgent and I'm lining up a plumber for the morning.</div>
+        </div>
+        <div class="ticket">
+          <div class="row"><b>Leak through kitchen ceiling</b><span class="tk-pill u">Urgent</span></div>
+          <div class="row" style="font-size:12.5px;color:#4B5563"><span>14 Alder Road · Flat 3</span><span class="tk-pill c">Plumbing</span></div>
+          <div class="tl"><div>22:14 Reported by phone, handled by Bethy</div><div>22:16 Triaged: plumbing, urgent</div><div>22:17 Matched: 2 plumbers available tomorrow</div></div>
+          <div class="row" style="font-size:13px"><span>Quote · first available, 8:30 AM</span><b style="font-size:15px">£145</b></div>
+          <div class="approve"><span class="y">Approve &amp; book</span><span class="n2">Ask for another quote</span></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>Design decisions</h2>
+    <p class="intro">Where the product draws its lines, and why.</p>
+    <ul class="decisions">
+      <li><b>Human in the loop on money</b><span>The AI can answer, triage, source and schedule on its own, but spending the landlord's money always needs one explicit approval. That boundary is what makes an autonomous agent feel trustworthy.</span></li>
+      <li><b>Grounded answers only</b><span>Ask Bethy answers "What needs my approval right now?" from workspace data, never from the model's imagination. When the data isn't there, it says so.</span></li>
+      <li><b>A voice with a personality setting</b><span>Each workspace sets the agent's name and tone, so a boutique letting agent and a large management company can each sound like themselves on the phone.</span></li>
+      <li><b>Tenants get their own app</b><span>Reporting a repair with photos, seeing rent invoices and reading announcements are different jobs from running a portfolio, so tenants got their own lighter mobile app with native glass effects.</span></li>
+      <li><b>Try it before you sign up</b><span>The site's "Talk to Bethy" button starts a live voice call in the browser through Vapi, so a landlord can hear the product before booking a demo.</span></li>
+    </ul>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap two">
+    <div class="prose">
+      <h3>Engineering highlights</h3>
+      <p><strong>A real-time voice bridge</strong> runs as its own long-lived Node service, because a serverless function can't hold a WebSocket open for a whole phone call. It relays μ-law 8kHz audio both ways between Twilio and Deepgram's Voice Agent, then posts the finished transcript back to the app.</p>
+      <p><strong>Multi-tenant security in the database.</strong> Every table carries a workspace ID, and Postgres row-level security guarantees one landlord's data can never reach another, even if the front end has a bug.</p>
+      <p>Integrations with Xero, GoCardless and the EPC Register, listing import from OpenRent, Rightmove and SpareRoom, WhatsApp webhooks and phone-number provisioning.</p>
+    </div>
+    <div class="prose">
+      <h3>Brand &amp; marketing surface</h3>
+      <p>The site covers pricing, a product tour, solutions by audience, trust and security, and legal pages. Motion uses Framer Motion and Lenis smooth scrolling with a custom cursor, and every page has a generated Open Graph image and a sitemap entry. I also designed Bethy's transactional email templates.</p>
+      <h3 style="margin-top:28px">System</h3>
+      <div class="swatches">
+        <div class="sw"><i style="background:#2563EB"></i><span><b>brand.blue</b>#2563EB</span></div>
+        <div class="sw"><i style="background:#EFF6FF"></i><span><b>brand.light</b>#EFF6FF</span></div>
+        <div class="sw"><i style="background:#19191C"></i><span><b>gray.800</b>#19191C</span></div>
+        <div class="sw"><i style="background:#00B69B"></i><span><b>success</b>#00B69B</span></div>
+        <div class="sw"><i style="background:#F93C65"></i><span><b>danger</b>#F93C65</span></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <a class="next" href="#gymbuddy"><div><p class="label">Back to the first case study</p><h3>GymBuddy</h3></div><span class="go">→</span></a>
+  </div></section>
+</main>
+
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <div>
+      <p class="label">Contact</p>
+      <h2 style="margin-top:12px">Have a product that needs <em>designing and building</em>?</h2>
+      <p style="margin-top:16px;color:var(--ink-2);max-width:48ch">I'm available for design engineering roles, founding-team positions and contract builds across web, mobile and AI.</p>
+    </div>
+    <ul>
+      <li><a href="https://www.gymbuddy.live" target="_blank" rel="noopener">GymBuddy</a><span>gymbuddy.live</span></li>
+      <li><a href="#gymbuddy">GymBuddy</a><span>case study</span></li>
+      <li><a href="#billery">Billery</a><span>case study</span></li>
+      <li><a href="#bethy">BethyAI</a><span>case study</span></li>
+    </ul>
+  </div>
+  <div class="wrap colophon">Set in Bricolage Grotesque, Hanken Grotesk and IBM Plex Mono · Designed and built by Dominic Eburuoh · 2026</div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Screenshot">
+  <button type="button" id="lb-close" aria-label="Close">×</button>
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+</dialog>
+
+<script>
+(function(){
+  // ---------- routing: each project is its own page ----------
+  var cases = ['gymbuddy','billery','bethy'];
+  var views = document.querySelectorAll('.view');
+  var titles = {home:'Dominic Eburuoh', gymbuddy:'GymBuddy · Dominic Eburuoh', billery:'Billery · Dominic Eburuoh', bethy:'BethyAI · Dominic Eburuoh'};
+  function route(){
+    var h = (location.hash || '').slice(1);
+    var page = cases.indexOf(h) >= 0 ? h : 'home';
+    views.forEach(function(v){ v.hidden = v.getAttribute('data-view') !== page; });
+    document.querySelectorAll('[data-nav]').forEach(function(a){
+      if (a.getAttribute('data-nav') === page) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    document.title = titles[page];
+    var target = page === 'home' && h && h !== 'home' ? document.getElementById(h) : null;
+    if (target) target.scrollIntoView(); else window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  // ---------- lightbox ----------
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap');
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('[data-lb]'); if (!b) return;
+    var img = b.querySelector('img'); if (!img) return;
+    lbImg.src = img.src; lbImg.alt = img.alt; lbCap.textContent = img.alt;
+    if (lb.showModal) lb.showModal();
+  });
+  document.getElementById('lb-close').addEventListener('click', function(){ lb.close(); });
+  lb.addEventListener('click', function(e){ if (e.target === lb) lb.close(); });
+
+  // ---------- capabilities ("u:" = used in the case studies) ----------
+  var caps = [
+    ["Product & UX design", "Discovery to validated flows.", ["u:Product strategy","u:Problem framing","User research","User interviews","Jobs to be done","Competitive analysis","u:User journeys","u:User flows","u:Information architecture","Wireframing","u:Interaction design","u:Onboarding design","u:Empty, error & loading states","Usability testing","A/B testing","u:Conversion design","u:Pricing page design","u:Trust & privacy UX","Service design","Heuristic evaluation"]],
+    ["Visual & brand design", "Identity and craft at every size.", ["u:Visual design","u:Typography","u:Colour systems","u:Brand identity","Logo & wordmark design","Illustration","Iconography","u:Marketing websites","u:App Store screenshots","u:App Store listing & ASO","u:Email template design","u:Social media campaigns","u:Open Graph images","Pitch decks","Print & packaging"]],
+    ["Design systems", "Shared language between Figma and code.", ["u:Design tokens","u:Semantic colour","u:8pt spacing grid","u:Type scales","u:Component libraries","u:Dark mode","u:Light & dark theming","Figma variables","Figma component properties","Auto layout","Storybook","Style Dictionary","Documentation sites","Design system governance"]],
+    ["Interaction & motion", "Movement that explains state.", ["u:Framer Motion","u:GSAP","u:Lenis smooth scroll","u:Reanimated 4","u:Gesture Handler","u:Micro-interactions","u:Custom cursors","Haptics","Lottie","Rive","Spline","After Effects","Principle","ProtoPie","View Transitions API","Scroll-driven animation"]],
+    ["Accessibility", "Usable by everyone, on every input.", ["u:WCAG 2.2 AA contrast","u:Semantic HTML","u:Keyboard navigation","u:Reduced motion","VoiceOver","TalkBack","Dynamic Type","ARIA patterns","Screen reader testing","Inclusive copywriting"]],
+    ["Front-end engineering", "Production UI for the web.", ["u:TypeScript","u:JavaScript (ES2024)","u:React 19","u:Next.js 16 (App Router)","u:Next.js (Pages Router)","u:Tailwind CSS v4","u:CSS / Sass","u:Bootstrap","u:Redux Toolkit","u:Zustand","u:React Hook Form","u:Zod","u:Formik & Yup","u:react-pdf","u:ApexCharts","u:Iconify & Lucide","u:Progressive Web Apps","u:SEO, sitemaps & robots","u:Vercel Analytics","Vite","Astro","Svelte","Vue","Three.js","D3.js","TanStack Query","shadcn/ui","Radix UI","CSS container queries"]],
+    ["Mobile & native", "Apps that feel at home on the device.", ["u:React Native","u:Expo SDK 57","u:Expo Router","u:Expo Modules API","u:Expo config plugins","u:Swift","u:SwiftUI","u:UIKit","u:Swift Charts","u:PhotosUI","u:AVFoundation","u:XcodeGen","u:Screen Time API","u:FamilyControls & DeviceActivity","u:Managed Settings shields","u:App extensions & App Groups","u:Vision","u:Core ML","u:MapKit","u:Sign in with Apple","u:Google Sign-In","u:Push notifications","u:Universal links & deep links","u:Camera & image picker","u:iOS Simulator","u:App Store Connect","TestFlight","EAS Build & Submit","Android / Kotlin","Jetpack Compose","WidgetKit","Live Activities"]],
+    ["Backend & data", "The layer the interface depends on.", ["u:Supabase","u:PostgreSQL","u:Row-level security","u:Multi-tenant architecture","u:SQL migrations","u:Prisma ORM","u:NextAuth / Auth.js","u:Node.js","u:WebSockets","u:REST API design","u:API keys & test mode","u:Idempotency keys","u:Rate limiting","u:Signed webhooks","u:Stripe subscriptions","u:GoCardless","u:Xero integration","u:Multi-currency","u:Transactional email","Serverless functions","Redis","GraphQL","tRPC","Firebase","Cloudflare Workers","Docker"]],
+    ["AI & voice", "Designing products where a model does real work.", ["u:LLM product design","u:Tool / function calling","u:OpenAI API","u:Groq","u:Deepgram Voice Agent","u:Twilio Media Streams","u:Vapi","u:Real-time speech-to-text","u:Voice dictation","u:Conversation design","u:Prompt design","u:Grounded assistants","u:On-device ML","u:WhatsApp Business webhooks","u:Human-in-the-loop design","Claude API","Structured outputs","RAG & embeddings","LLM evals","Langfuse / Helicone"]],
+    ["Tools & workflow", "What's open on my machine most days.", ["Figma","FigJam","Framer","u:Xcode","u:VS Code","u:Claude Code","u:Git & GitHub","u:Vercel","u:Expo Go & dev builds","u:ngrok","u:ESLint","u:Prettier","u:Husky & lint-staged","u:Supabase CLI","Cursor","Linear","Notion","Jira","Miro","Adobe Illustrator","Adobe Photoshop","Sentry","PostHog","Mixpanel","Jest","Playwright"]]
+  ];
+  function esc(s){ return s.replace(/&/g,'&amp;'); }
+  var root = document.getElementById('caps');
+  root.innerHTML = caps.map(function(c){
+    var items = c[2].map(function(s){
+      var used = s.indexOf('u:') === 0, label = used ? s.slice(2) : s;
+      return '<li' + (used ? ' class="u"' : '') + '>' + esc(label) + '</li>';
+    }).join('');
+    return '<div class="cap"><header><h3>' + esc(c[0]) + '</h3><span class="mono">' + c[2].length + '</span></header><p>' + c[1] + '</p><ul>' + items + '</ul></div>';
+  }).join('');
+  var all = document.getElementById('f-all'), used = document.getElementById('f-used');
+  function set(onlyUsed){
+    root.classList.toggle('only-used', onlyUsed);
+    all.setAttribute('aria-pressed', String(!onlyUsed));
+    used.setAttribute('aria-pressed', String(onlyUsed));
+    try { localStorage.setItem('capFilter', onlyUsed ? 'used' : 'all'); } catch(e) {}
+  }
+  all.addEventListener('click', function(){ set(false); });
+  used.addEventListener('click', function(){ set(true); });
+  try { if (localStorage.getItem('capFilter') === 'used') set(true); } catch(e) {}
+})();
+</script>
+</body>
+</html>
