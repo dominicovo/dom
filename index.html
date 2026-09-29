@@ -411,6 +411,11 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
 .nav{align-items:center}
 .menu-btn{line-height:inherit}
 
+.mail{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+.mail a{font-family:var(--display);font-size:clamp(20px,2.4vw,28px);font-weight:600;letter-spacing:-.01em;text-decoration:underline;text-decoration-color:var(--red-line);text-underline-offset:5px;user-select:all;word-break:break-all}
+.mail button{font:inherit;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:7px 12px;border:1px solid var(--rule-2);background:var(--ground);color:var(--ink-2);cursor:pointer}
+.mail button:hover{border-color:var(--red-line);color:var(--red)}
+
 .view[hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -708,7 +713,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
   <div class="wrap"><div class="facts">
     <div><h4>Role</h4><ul><li>Product &amp; UX design</li><li>UI and design system</li><li>Full-stack engineering</li><li>Public API design</li><li>Landing page</li></ul></div>
     <div><h4>Surfaces</h4><ul><li>Web app (Next.js)</li><li>Installable PWA</li><li>Customer share links &amp; PDFs</li><li>REST API, webhooks &amp; docs</li><li>Marketing site</li></ul></div>
-    <div><h4>Business model</h4><ul><li>Free plan with document limits</li><li>Pro at £10/month</li><li>No per-seat pricing</li></ul></div>
+    <div><h4>Business model</h4><ul><li>Free plan with document limits</li><li>Pro at £10/month</li><li>No per-seat pricing</li><li><a href="https://billery.io" target="_blank" rel="noopener">billery.io ↗</a></li></ul></div>
     <div><h4>Stack</h4><div class="chips"><span class="chip hot">Next.js 16</span><span class="chip">React 19</span><span class="chip">Tailwind v4</span><span class="chip">Prisma 7</span><span class="chip">PostgreSQL</span><span class="chip">NextAuth</span><span class="chip hot">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">react-pdf</span><span class="chip">Zod</span></div></div>
   </div></div>
 
@@ -847,7 +852,7 @@ Idempotency-Key: <span class="v">order-8812</span>
   <div class="wrap"><div class="facts">
     <div><h4>Role</h4><ul><li>Product strategy &amp; UX</li><li>Conversation &amp; voice design</li><li>Dashboard &amp; mobile UI</li><li>Real-time systems</li></ul></div>
     <div><h4>Surfaces</h4><ul><li>Landlord dashboard (web)</li><li>Tenant app (iOS/Android)</li><li>AI phone receptionist</li><li>WhatsApp channel</li></ul></div>
-    <div><h4>Market</h4><ul><li>UK landlords</li><li>Letting agents</li><li>Property management companies</li></ul></div>
+    <div><h4>Market</h4><ul><li>UK landlords</li><li>Letting agents</li><li>Property management companies</li><li><a href="https://bethy.ai" target="_blank" rel="noopener">bethy.ai ↗</a></li></ul></div>
     <div><h4>Stack</h4><div class="chips"><span class="chip">Next.js</span><span class="chip hot">Supabase + RLS</span><span class="chip hot">Twilio Media Streams</span><span class="chip hot">Deepgram Voice Agent</span><span class="chip">Groq</span><span class="chip">WebSockets</span><span class="chip">Expo Router</span><span class="chip">GSAP</span></div></div>
   </div></div>
 
@@ -1058,12 +1063,13 @@ Idempotency-Key: <span class="v">order-8812</span>
       <p class="label">Contact</p>
       <h2 style="margin-top:12px">Have a product that needs <em>designing and building</em>?</h2>
       <p style="margin-top:16px;color:var(--ink-2);max-width:48ch">I'm available for design engineering roles, founding-team positions and contract builds across web, mobile and AI.</p>
+      <div class="mail"><a href="mailto:rex4dom@gmail.com" id="mail-addr">rex4dom@gmail.com</a><button type="button" id="mail-copy">Copy</button></div>
     </div>
     <ul>
+      <li><a href="mailto:rex4dom@gmail.com">Email</a><span>rex4dom@gmail.com</span></li>
       <li><a href="https://www.gymbuddy.live" target="_blank" rel="noopener">GymBuddy</a><span>gymbuddy.live</span></li>
-      <li><a href="#gymbuddy">GymBuddy</a><span>case study</span></li>
-      <li><a href="#billery">Billery</a><span>case study</span></li>
-      <li><a href="#bethy">BethyAI</a><span>case study</span></li>
+      <li><a href="https://billery.io" target="_blank" rel="noopener">Billery</a><span>billery.io</span></li>
+      <li><a href="https://bethy.ai" target="_blank" rel="noopener">BethyAI</a><span>bethy.ai</span></li>
     </ul>
   </div>
   <div class="wrap colophon">Set in Bricolage Grotesque, Hanken Grotesk and IBM Plex Mono · Designed and built by Dominic Eburuoh · 2026</div>
@@ -1111,6 +1117,14 @@ Idempotency-Key: <span class="v">order-8812</span>
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !wl.hidden) { setMenu(false); wb.focus(); } });
   window.addEventListener('hashchange', route);
   route();
+
+  // ---------- copy email ----------
+  var mc = document.getElementById('mail-copy'), ma = document.getElementById('mail-addr');
+  mc.addEventListener('click', function(){
+    function done(t){ mc.textContent = t; setTimeout(function(){ mc.textContent = 'Copy'; }, 1600); }
+    function select(){ var r = document.createRange(); r.selectNodeContents(ma); var sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); done('Selected'); }
+    try { navigator.clipboard.writeText(ma.textContent).then(function(){ done('Copied'); }, select); } catch (e) { select(); }
+  });
 
   // ---------- lightbox ----------
   var lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap');
