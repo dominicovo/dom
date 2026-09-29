@@ -393,6 +393,22 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
 
 .thumbs.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 @media (max-width:760px){.thumbs.three{grid-template-columns:1fr}}
+.menu{position:relative}
+.menu-btn{font:inherit;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:none;border:0;padding:0;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.menu-btn:hover,.menu-btn[aria-expanded="true"],.menu.current .menu-btn{color:var(--red)}
+.menu-btn span{font-size:10px;transition:transform .2s}
+.menu-btn[aria-expanded="true"] span{transform:rotate(180deg)}
+.menu-list{position:absolute;top:calc(100% + 12px);left:-14px;min-width:230px;background:var(--surface);border:1px solid var(--rule-2);box-shadow:0 20px 40px -24px rgba(10,12,20,.45);display:grid;padding:6px;z-index:30}
+.menu-list a{display:grid;gap:2px;padding:10px 12px;text-decoration:none;text-transform:none;letter-spacing:0;font-family:var(--body);color:var(--ink)}
+.menu-list a:hover,.menu-list a:focus-visible{background:var(--sunk);color:var(--ink)}
+.menu-list a.on b{color:var(--red)}
+.menu-list b{font-family:var(--display);font-size:16px;font-weight:600}
+.menu-list span{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.menu-list[hidden],[hidden]{display:none!important}
+@media (max-width:640px){.menu-list{left:auto;right:-60px}}
+.work-card{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 80px)}
+.work-card.flash{border-color:var(--red);box-shadow:0 0 0 3px var(--red-soft)}
+
 .view[hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -403,9 +419,14 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
   <div class="wrap">
     <a class="brand" href="#home">Dominic Eburuoh<span>.</span></a>
     <nav class="nav" aria-label="Pages">
-      <a href="#gymbuddy" data-nav="gymbuddy">GymBuddy</a>
-      <a href="#billery" data-nav="billery">Billery</a>
-      <a href="#bethy" data-nav="bethy">BethyAI</a>
+      <div class="menu" id="work-menu">
+        <button type="button" class="menu-btn" id="work-btn" aria-expanded="false" aria-controls="work-list">Work <span aria-hidden="true">▾</span></button>
+        <div class="menu-list" id="work-list" hidden>
+          <a href="#work-gymbuddy" data-work="gymbuddy"><b>GymBuddy</b><span>Health &amp; Fitness · iOS</span></a>
+          <a href="#work-billery" data-work="billery"><b>Billery</b><span>Fintech · Web app</span></a>
+          <a href="#work-bethy" data-work="bethy"><b>BethyAI</b><span>PropTech · AI &amp; voice</span></a>
+        </div>
+      </div>
       <a href="#capabilities" class="opt">Capabilities</a>
       <a href="#contact" class="opt">Contact</a>
     </nav>
@@ -458,7 +479,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
         </div>
       </div>
       <div class="work-list">
-        <a class="work-card" href="#gymbuddy">
+        <a class="work-card" id="work-gymbuddy" href="#gymbuddy">
           <div class="work-text">
             <p class="label">Health &amp; Fitness · Digital wellbeing</p>
             <h3>GymBuddy</h3>
@@ -472,7 +493,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
             <img src="img/gb-profile.jpg" alt="" loading="lazy">
           </div>
         </a>
-        <a class="work-card" href="#billery">
+        <a class="work-card" id="work-billery" href="#billery">
           <div class="work-text">
             <p class="label">Fintech · Invoicing · Developer API</p>
             <h3>Billery</h3>
@@ -482,7 +503,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
           </div>
           <div class="cover blw" aria-hidden="true"><img src="img/blw-home-prompt.jpg" alt="" loading="lazy"></div>
         </a>
-        <a class="work-card" href="#bethy">
+        <a class="work-card" id="work-bethy" href="#bethy">
           <div class="work-text">
             <p class="label">PropTech · AI &amp; voice · B2B SaaS</p>
             <h3>BethyAI</h3>
@@ -1066,13 +1087,30 @@ Idempotency-Key: <span class="v">order-8812</span>
     var h = (location.hash || '').slice(1);
     var page = cases.indexOf(h) >= 0 ? h : 'home';
     views.forEach(function(v){ v.hidden = v.getAttribute('data-view') !== page; });
-    document.querySelectorAll('[data-nav]').forEach(function(a){
-      if (a.getAttribute('data-nav') === page) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
-    });
+    document.getElementById('work-menu').classList.toggle('current', page !== 'home');
+    document.querySelectorAll('[data-work]').forEach(function(a){ a.classList.toggle('on', a.getAttribute('data-work') === page || h === 'work-' + a.getAttribute('data-work')); });
     document.title = titles[page];
     var target = page === 'home' && h && h !== 'home' ? document.getElementById(h) : null;
-    if (target) target.scrollIntoView(); else window.scrollTo(0,0);
+    if (target) {
+      target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      if (target.classList.contains('work-card')) {
+        target.classList.add('flash');
+        setTimeout(function(){ target.classList.remove('flash'); }, 1400);
+      }
+    } else window.scrollTo(0,0);
   }
+
+  // ---------- Work menu ----------
+  var wm = document.getElementById('work-menu'), wb = document.getElementById('work-btn'), wl = document.getElementById('work-list');
+  function setMenu(open){ wl.hidden = !open; wb.setAttribute('aria-expanded', String(open)); }
+  wb.addEventListener('click', function(e){ e.stopPropagation(); setMenu(wl.hidden); if (!wl.hidden) wl.querySelector('a').focus(); });
+  wl.addEventListener('click', function(e){
+    var a = e.target.closest('a'); if (!a) return;
+    setMenu(false);
+    if (location.hash === a.getAttribute('href')) { e.preventDefault(); route(); }
+  });
+  document.addEventListener('click', function(e){ if (!wm.contains(e.target)) setMenu(false); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && !wl.hidden) { setMenu(false); wb.focus(); } });
   window.addEventListener('hashchange', route);
   route();
 
