@@ -391,6 +391,8 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
 .cover.blw{background:#000;padding:28px 0 0 28px;align-items:flex-start;justify-content:flex-start}
 .cover.blw img{width:100%;border-radius:10px 0 0 0;border:1px solid #2a2a2a;border-right:0;border-bottom:0}
 
+.thumbs.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.thumbs.three{grid-template-columns:1fr}}
 .view[hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -642,12 +644,9 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
     <div class="phones small">
       <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-apps.jpg" alt="First build: pick the apps to lock" loading="lazy"></div></button><figcaption><b>Pick your weaknesses</b>Onboarding step 1. Choose the apps that get locked. Apple keeps the list private.</figcaption></figure>
       <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-schedule.jpg" alt="First build: set gym days and lock window" loading="lazy"></div></button><figcaption><b>Set your schedule</b>Gym days as toggle pills, and the lock window set with steppers instead of a fiddly time wheel.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-perms.jpg" alt="First build: three permissions screen" loading="lazy"></div></button><figcaption><b>Three permissions</b>Screen Time, notifications and location, each with a single line on why it's needed.</figcaption></figure>
       <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-shield.jpg" alt="First build: custom iOS shield when opening a locked app" loading="lazy"></div></button><figcaption><b>The iOS shield</b>What you see when you open a locked app. Designed through a ShieldConfiguration extension: streak, distance to the gym and a buddy's check-in.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-settings.jpg" alt="First build: settings for strict mode, grace period and check-in" loading="lazy"></div></button><figcaption><b>Settings</b>Strict mode, grace period, check-in radius and what counts as proof, grouped by lock and check-in.</figcaption></figure>
       <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-paircard.jpg" alt="First build: shareable pair card with QR code" loading="lazy"></div></button><figcaption><b>Share your pair card</b>A QR card with your gym and schedule, shareable as a link, full-screen code or Apple Wallet pass.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-scan.jpg" alt="First build: scan a buddy's code" loading="lazy"></div></button><figcaption><b>Pair in person</b>Scan a buddy's QR or type their four digits on a large keypad.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/gbv1-invite.jpg" alt="First build: web invite landing page" loading="lazy"></div></button><figcaption><b>Invite link</b>The web page a friend lands on from a link, showing the inviter's week before they install.</figcaption></figure>
+
     </div>
   </div></section>
 
@@ -713,72 +712,43 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
     <div class="web-list">
       <div class="web-row">
         <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · home</span></div><img src="img/blw-home-prompt.jpg" alt="Billery home: Hi Maya, what are we billing? with a prompt typed in" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">01 · Home</span><b>"What are we billing?"</b>Home isn't a dashboard. It's one question and one box: describe the job, who it's for and what to charge, and Billery creates the invoice, quote, receipt or customer. A <em>Voice</em> button dictates into the same box, and Shift + Enter adds a new line for longer jobs.</figcaption></figure>
-      </div>
-      <div class="web-row">
-        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · create manually</span></div><img src="img/blw-home-menu.jpg" alt="Billery home with Create manually menu open: new invoice, new quote, new customer" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">02 · Create manually</span><b>A way out of the conversation</b>Some people want a form. <em>Create manually</em> sits quietly in the corner and opens a short menu: new invoice, new quote or new customer. The AI path is the default without being the only path.</figcaption></figure>
+        <figure class="shot"><figcaption><span class="mono">01 · Home</span><b>"What are we billing?"</b>Home isn't a dashboard. It's one question and one box: describe the job, who it's for and what to charge, and Billery creates the invoice, quote, receipt or customer. A <em>Voice</em> button dictates into the same box, and Shift + Enter adds a new line for longer jobs. People who prefer forms can use <em>Create manually</em> in the corner for a new invoice, quote or customer.</figcaption></figure>
       </div>
       <div class="web-row">
         <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · new invoice</span></div><img src="img/blw-invoice-new-ai.jpg" alt="Billery new invoice form with Generate line items with AI panel" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">03 · New invoice</span><b>AI inside the form, too</b>The manual form keeps a highlighted <em>Generate line items with AI</em> panel above the line items. Describe the job in plain language and it drafts the items with quantities and prices, which you then edit in the table below before saving.</figcaption></figure>
+        <figure class="shot"><figcaption><span class="mono">02 · New invoice</span><b>AI inside the form, too</b>The manual form keeps a highlighted <em>Generate line items with AI</em> panel above the line items. Describe the job in plain language and it drafts the items with quantities and prices, which you then edit in the table below before saving.</figcaption></figure>
       </div>
       <div class="web-row">
         <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · invoices</span></div><img src="img/blw-invoices.jpg" alt="Billery invoices table with draft, sent, paid, overdue and receipt" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">04 · Invoices</span><b>One table for everything you've billed</b>Number, customer, issue and due dates, amount and a status pill: grey for draft, blue for sent, green for paid, red for overdue. Receipts live in the same list with a small <em>Receipt</em> tag rather than in a separate section to go looking for.</figcaption></figure>
+        <figure class="shot"><figcaption><span class="mono">03 · Invoices</span><b>One table for everything you've billed</b>Number, customer, issue and due dates, amount and a status pill: grey for draft, blue for sent, green for paid, red for overdue. Receipts live in the same list with a small <em>Receipt</em> tag rather than in a separate section to go looking for.</figcaption></figure>
       </div>
       <div class="web-row">
         <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · INV-0011</span></div><img src="img/blw-invoice.jpg" alt="Billery invoice detail with Download PDF, Share PDF, Mark as Paid, Edit and Delete" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">05 · Invoice</span><b>The document, with its next steps on top</b>The invoice reads like the PDF your customer gets: line items on an inverted header band, subtotal, VAT and total, then notes. Everything you can do next sits in one row: Download PDF, Share PDF, Mark as Paid, Edit, and a red Delete kept apart from the rest.</figcaption></figure>
+        <figure class="shot"><figcaption><span class="mono">04 · Invoice</span><b>The document, with its next steps on top</b>The invoice reads like the PDF your customer gets: line items on an inverted header band, subtotal, VAT and total, then notes. Everything you can do next sits in one row: Download PDF, Share PDF, Mark as Paid, Edit, and a red Delete kept apart from the rest.</figcaption></figure>
       </div>
       <div class="web-row">
         <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery.app/i/…</span></div><img src="img/blw-share-invoice.jpg" alt="Billery public invoice page as the customer sees it" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">06 · What the customer sees</span><b>A link, not an account</b>Every invoice and quote has a private share link. Your customer opens it on any device and sees your business name, the document and a <em>Download PDF</em> button, with nothing to sign up for.</figcaption></figure>
+        <figure class="shot"><figcaption><span class="mono">05 · What the customer sees</span><b>A link, not an account</b>Every invoice and quote has a private share link. Your customer opens it on any device and sees your business name, the document and a <em>Download PDF</em> button, with nothing to sign up for.</figcaption></figure>
       </div>
       <div class="web-row">
         <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · QUO-0006</span></div><img src="img/blw-quote.jpg" alt="Billery quote detail with Convert to Invoice button" loading="lazy"></div></button></div>
-        <figure class="shot"><figcaption><span class="mono">07 · Quote</span><b>Yes turns into an invoice in one click</b>Quotes share the invoice layout, with a validity date instead of a due date. When the customer agrees, <em>Convert to Invoice</em> carries the customer, line items and totals straight across, so nothing gets retyped.</figcaption></figure>
+        <figure class="shot"><figcaption><span class="mono">06 · Quote</span><b>Yes turns into an invoice in one click</b>Quotes share the invoice layout, with a validity date instead of a due date. When the customer agrees, <em>Convert to Invoice</em> carries the customer, line items and totals straight across, so nothing gets retyped.</figcaption></figure>
       </div>
     </div>
 
-    <div class="web-grid" style="margin-top:clamp(40px,5vw,64px)">
-      <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · customers</span></div><img src="img/blw-customers.jpg" alt="Billery customers table" loading="lazy"></div></button>
-        <figcaption><span class="mono">08 · Customers</span><b>Who you bill, and how often</b>Each row shows contact details alongside counts of invoices and quotes, so your regulars stand out without a report.</figcaption>
-      </figure>
-      <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · Northside Bakery</span></div><img src="img/blw-customer.jpg" alt="Billery customer detail with total invoiced and document history" loading="lazy"></div></button>
-        <figcaption><span class="mono">09 · Customer</span><b>Edit in place, history alongside</b>Contact details are editable right on the page, with a side panel showing the total invoiced and every invoice and quote for that customer, each with its status.</figcaption>
-      </figure>
-      <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · settings</span></div><img src="img/blw-profile-settings.jpg" alt="Billery document settings with numbering and toggles" loading="lazy"></div></button>
-        <figcaption><span class="mono">10 · Document settings</span><b>Paperwork that matches yours</b>Pick the currency and numbering prefixes for invoices, quotes and receipts, then toggle exactly which of your details appear on documents: logo, address, phone, email, website, VAT and company numbers.</figcaption>
-      </figure>
-      <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · billing</span></div><img src="img/blw-profile-billing.jpg" alt="Billery billing tab with free plan usage meters" loading="lazy"></div></button>
-        <figcaption><span class="mono">11 · Billing</span><b>Limits you can see</b>The free plan shows usage as meters (invoices used, quotes used) next to a single upgrade button for Pro at £10 a month. Payment is handled by Stripe.</figcaption>
-      </figure>
-      <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · developers</span></div><img src="img/blw-profile-developers.jpg" alt="Billery developers tab with API keys and webhooks" loading="lazy"></div></button>
-        <figcaption><span class="mono">12 · Developers</span><b>API keys and webhooks, self-serve</b>Pro users create API keys and add webhook endpoints from their settings. Webhooks fire when an invoice is sent or paid, a quote is converted or a receipt is created, and every request is signed.</figcaption>
-      </figure>
-      <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · docs</span></div><img src="img/blw-docs.jpg" alt="Billery API documentation page" loading="lazy"></div></button>
-        <figcaption><span class="mono">13 · API docs</span><b>Documentation built into the product</b>A docs section covering authentication, test mode, rate limits, idempotency, errors, and the invoice, quote, receipt and webhook endpoints, opening with a copy-paste request.</figcaption>
-      </figure>
-      <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · light mode</span></div><img src="img/blw-light-invoices.jpg" alt="Billery invoices in light mode" loading="lazy"></div></button>
-        <figcaption><span class="mono">14 · Light mode</span><b>Two themes from one set of tokens</b>A toggle at the foot of the sidebar switches the whole app to light. Status pills, tables and the inverted header bands keep their meaning in both.</figcaption>
-      </figure>
-      <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · onboarding</span></div><img src="img/blw-after-login.jpg" alt="Billery onboarding: complete your profile" loading="lazy"></div></button>
-        <figcaption><span class="mono">15 · Onboarding</span><b>One short form before you start</b>New accounts land on a single profile form (name, phone, company, address and logo) so the very first invoice already carries your branding.</figcaption>
-      </figure>
+    <h3 class="fm-title">Also in the app</h3>
+    <div class="feature-map">
+      <div><span class="mono">Customers</span><b>Clients with their history</b><p>A customer table with invoice and quote counts, and a detail page with editable contact details, total invoiced and every document's status.</p></div>
+      <div><span class="mono">Settings</span><b>Paperwork that matches yours</b><p>Currency, numbering prefixes, and toggles for exactly which business details appear on invoices, quotes and receipts.</p></div>
+      <div><span class="mono">Billing</span><b>Visible plan limits</b><p>Usage meters for the free plan and a single upgrade to Pro at £10 a month through Stripe.</p></div>
+      <div><span class="mono">Developers</span><b>Keys, webhooks and docs</b><p>Self-serve API keys, signed webhook endpoints and a built-in API reference covering auth, test mode, rate limits and idempotency.</p></div>
+      <div><span class="mono">Themes</span><b>Dark and light mode</b><p>A sidebar toggle switches the whole app, with status colours keeping their meaning in both.</p></div>
+      <div><span class="mono">Onboarding</span><b>One short form</b><p>Name, company, address and logo up front, so the first invoice already carries your branding.</p></div>
     </div>
 
     <div class="mobile-row">
       <div class="mobile-copy">
-        <span class="mono">16 · On a phone</span>
+        <span class="mono">07 · On a phone</span>
         <h3>The same app in your pocket</h3>
         <p>Billery installs to the home screen as a PWA. On a phone the sidebar collapses, the home prompt fills the screen for dictating on the go, and the invoice table turns into stacked cards with the number, customer, date, amount and status.</p>
       </div>
@@ -803,15 +773,11 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
   <section class="case-sec"><div class="wrap">
     <h2>The landing page</h2>
     <p class="intro">A separate Next.js marketing site, written to answer the questions a sole trader actually asks, in the order they ask them. Captured from the current site.</p>
-    <div class="thumbs">
+    <div class="thumbs three">
       <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · hero</span></div><img src="img/bl-hero.jpg" alt="Billery landing hero: Billing that takes a sentence" loading="lazy"></div></button><figcaption><b>Hero</b>"Billing that takes a sentence", with the full loop shown on the right: request, draft, invoice, paid.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · features</span></div><img src="img/bl-features.jpg" alt="Billery landing features grid" loading="lazy"></div></button><figcaption><b>Features</b>Nine jobs written as outcomes, such as "Quote it, then invoice it".</figcaption></figure>
       <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · how it works</span></div><img src="img/bl-how.jpg" alt="Billery landing three steps" loading="lazy"></div></button><figcaption><b>How it works</b>Add a customer, describe the work, send or share.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · developers</span></div><img src="img/bl-dev.jpg" alt="Billery landing developer section" loading="lazy"></div></button><figcaption><b>Developers</b>The API pitched in plain English next to a real request.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · who it's for</span></div><img src="img/bl-who.jpg" alt="Billery landing personas carousel" loading="lazy"></div></button><figcaption><b>Who it's for</b>Personas shown as the sentence each would say to bill a job.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · install</span></div><img src="img/bl-install.jpg" alt="Billery landing PWA install steps" loading="lazy"></div></button><figcaption><b>Install</b>Three short install recipes for iPhone, Android and desktop.</figcaption></figure>
       <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · pricing</span></div><img src="img/bl-pricing.jpg" alt="Billery landing pricing" loading="lazy"></div></button><figcaption><b>Pricing</b>Free, then one Pro plan at £10 a month. No per-seat maths.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>app · sign in</span></div><img src="img/bl-signin.jpg" alt="Billery app sign-in" loading="lazy"></div></button><figcaption><b>Sign in</b>The demo replays beside one form that signs you in or creates your account.</figcaption></figure>
+
     </div>
   </div></section>
 
@@ -841,11 +807,7 @@ Idempotency-Key: <span class="v">order-8812</span>
 
   <section class="case-sec"><div class="wrap">
     <h2>Where it started</h2>
-    <p class="intro">Billery v1 (2025) was a cross-border billing tool for freelancers, with currency accounts in GBP, USD and NGN, built on Next.js 13, Redux Toolkit and Bootstrap and opening on charts. The rebuild above swapped the dashboard-first design for the conversation-first one.</p>
-    <div class="web-grid">
-      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>v1 · home</span></div><img src="img/bl-v1-dashboard.jpg" alt="Billery v1 dashboard with currency accounts" loading="lazy"></div></button><figcaption><b>v1 dashboard</b>Balances per currency and a billed-per-month chart.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>v1 · overview</span></div><img src="img/bl-v1-overview.jpg" alt="Billery v1 overview tiles and chart" loading="lazy"></div></button><figcaption><b>v1 overview</b>Billed, paid, pending and overdue tiles with a payout calculator.</figcaption></figure>
-    </div>
+    <p class="intro">Billery v1 (2025) was a cross-border billing tool for freelancers, with currency accounts in GBP, USD and NGN, built on Next.js 13, Redux Toolkit and Bootstrap and opening on charts. The rebuild swapped that dashboard-first design for the conversation-first one above.</p>
   </div></section>
 
   <section class="case-sec"><div class="wrap">
@@ -1059,11 +1021,10 @@ Idempotency-Key: <span class="v">order-8812</span>
   <section class="case-sec"><div class="wrap">
     <h2>The marketing site</h2>
     <p class="intro">A Next.js site with Framer Motion, Lenis smooth scrolling and a live "Talk to Bethy" voice demo in the browser.</p>
-    <div class="thumbs">
+    <div class="thumbs three">
       <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · hero</span></div><img src="img/bt-hero.jpg" alt="Bethy marketing hero" loading="lazy"></div></button><figcaption><b>Hero</b>"Meet Bethy" with a live voice demo button.</figcaption></figure>
       <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · features</span></div><img src="img/bt-cards.jpg" alt="Bethy feature cards" loading="lazy"></div></button><figcaption><b>What it does</b>A photographic bento of three promises.</figcaption></figure>
       <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · how it works</span></div><img src="img/bt-flow.jpg" alt="Bethy how it works" loading="lazy"></div></button><figcaption><b>How it works</b>From a ringing phone to a finished repair.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>dashboard · sign in</span></div><img src="img/bt-signin.jpg" alt="Bethy dashboard sign-in" loading="lazy"></div></button><figcaption><b>Dashboard sign-in</b>Value proposition on blue, focused form on black.</figcaption></figure>
     </div>
   </div></section>
 
