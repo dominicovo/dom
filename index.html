@@ -383,6 +383,14 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
 .bx-ph-tabs{display:grid;grid-template-columns:repeat(5,1fr);background:rgba(255,255,255,.9);border:1px solid #E5E7EB;border-radius:22px;padding:8px 4px;margin-top:10px;font-size:10.5px;color:#6B7280;text-align:center}
 .bx-ph-tabs .on{color:#2563EB;font-weight:700}
 
+.mobile-row{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.7fr) minmax(0,.7fr);gap:clamp(20px,3vw,40px);align-items:center;margin-top:clamp(48px,6vw,72px);padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--rule)}
+.mobile-copy{display:grid;gap:10px;color:var(--ink-2)}
+.mobile-copy .mono{color:var(--red);font-size:11px;letter-spacing:.1em;text-transform:uppercase}
+.mobile-copy h3{font-size:clamp(22px,2.4vw,30px);font-weight:600;color:var(--ink)}
+@media (max-width:760px){.mobile-row{grid-template-columns:1fr 1fr}.mobile-copy{grid-column:1/-1}}
+.cover.blw{background:#000;padding:28px 0 0 28px;align-items:flex-start;justify-content:flex-start}
+.cover.blw img{width:100%;border-radius:10px 0 0 0;border:1px solid #2a2a2a;border-right:0;border-bottom:0}
+
 .view[hidden]{display:none!important}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -466,11 +474,11 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
           <div class="work-text">
             <p class="label">Fintech · Invoicing · Developer API</p>
             <h3>Billery</h3>
-            <p>Describe the work in a sentence, or say it out loud, and get a branded invoice ready to send. A native SwiftUI iPhone app, a web app and PWA, and a public API.</p>
-            <div class="chips"><span class="chip hot">Next.js 16</span><span class="chip">Prisma</span><span class="chip">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">SwiftUI</span></div>
+            <p>A web app where you describe the job in a sentence, or say it out loud, and get a branded invoice ready to send. Installable as a PWA, with a public API for developers.</p>
+            <div class="chips"><span class="chip hot">Next.js 16</span><span class="chip">Prisma</span><span class="chip">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">PWA</span></div>
             <span class="go">Read the case study →</span>
           </div>
-          <div class="cover bl" aria-hidden="true"><img src="img/bla-invoices.jpg" alt="" loading="lazy"><img src="img/bla-home.jpg" alt="" loading="lazy"><img src="img/bla-clients.jpg" alt="" loading="lazy"></div>
+          <div class="cover blw" aria-hidden="true"><img src="img/blw-home-prompt.jpg" alt="" loading="lazy"></div>
         </a>
         <a class="work-card" href="#bethy">
           <div class="work-text">
@@ -677,13 +685,13 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
   <section class="wrap case-hero">
     <p class="label">Fintech · Invoicing · Small business &amp; sole traders · Developer API</p>
     <h1>Billery</h1>
-    <p class="tag">Describe the work in a sentence, or say it out loud, and get a branded invoice ready to send in under a minute.</p>
+    <p class="tag">A web app where you describe the job in a sentence, or say it out loud, and get a branded invoice ready to send.</p>
   </section>
   <div class="wrap"><div class="facts">
-    <div><h4>Role</h4><ul><li>Product &amp; UX design</li><li>Full-stack engineering</li><li>Native iOS app</li><li>Public API design</li></ul></div>
-    <div><h4>Surfaces</h4><ul><li>Native SwiftUI iOS app</li><li>Web app + installable PWA</li><li>Customer share links &amp; PDFs</li><li>REST API + webhooks</li></ul></div>
-    <div><h4>Business model</h4><ul><li>Free to start</li><li>Pro at £10/month</li><li>No per-seat pricing</li></ul></div>
-    <div><h4>Stack</h4><div class="chips"><span class="chip hot">SwiftUI</span><span class="chip">Swift Charts</span><span class="chip hot">Next.js 16</span><span class="chip">Prisma 7</span><span class="chip">PostgreSQL</span><span class="chip">NextAuth</span><span class="chip hot">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">react-pdf</span></div></div>
+    <div><h4>Role</h4><ul><li>Product &amp; UX design</li><li>UI and design system</li><li>Full-stack engineering</li><li>Public API design</li><li>Landing page</li></ul></div>
+    <div><h4>Surfaces</h4><ul><li>Web app (Next.js)</li><li>Installable PWA</li><li>Customer share links &amp; PDFs</li><li>REST API, webhooks &amp; docs</li><li>Marketing site</li></ul></div>
+    <div><h4>Business model</h4><ul><li>Free plan with document limits</li><li>Pro at £10/month</li><li>No per-seat pricing</li></ul></div>
+    <div><h4>Stack</h4><div class="chips"><span class="chip hot">Next.js 16</span><span class="chip">React 19</span><span class="chip">Tailwind v4</span><span class="chip">Prisma 7</span><span class="chip">PostgreSQL</span><span class="chip">NextAuth</span><span class="chip hot">OpenAI tools</span><span class="chip">Stripe</span><span class="chip">react-pdf</span><span class="chip">Zod</span></div></div>
   </div></div>
 
   <section class="case-sec"><div class="wrap two">
@@ -694,70 +702,127 @@ dialog.lb button{position:fixed;top:14px;right:16px;background:#fff;color:#111;b
     </div>
     <div class="prose">
       <h3>What I built</h3>
-      <p>A billing workspace with four jobs: <strong>clients, invoices, quotes and getting paid</strong>. You describe the work in plain English or by voice and Billery drafts itemised line items. It emails a branded PDF, gives the customer a share link that needs no account, and tracks every document from draft to sent to paid, with overdue ones flagged.</p>
-      <p>The same workspace runs as a web app, an installable PWA and a native SwiftUI iPhone app.</p>
+      <p>A billing workspace with four areas: <strong>Home, Customers, Invoices and Quotes</strong>. Home is a conversation: you describe the job and Billery creates the invoice, quote, receipt or customer. Forms are still there for people who prefer them.</p>
+      <p>Invoices go out as branded PDFs and share links your customer opens without an account. Everything is tracked from draft to sent to paid, and the same workspace can be driven from your own systems through a public API.</p>
     </div>
   </div></section>
 
   <section class="case-sec"><div class="wrap">
-    <h2>Inside the iPhone app</h2>
-    <p class="intro">A native SwiftUI app with a five-tab structure: Home, Clients, Invoices, Quotes and Proposals. Captured on the iOS Simulator against Billery's local development backend, using a fictional design studio's clients and invoices.</p>
-    <div class="phones">
+    <h2>Inside the app</h2>
+    <p class="intro">A walk through the web app in the order someone uses it. Captured from the app running locally with a fictional design studio's clients, invoices and quotes.</p>
+    <div class="web-list">
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · home</span></div><img src="img/blw-home-prompt.jpg" alt="Billery home: Hi Maya, what are we billing? with a prompt typed in" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">01 · Home</span><b>"What are we billing?"</b>Home isn't a dashboard. It's one question and one box: describe the job, who it's for and what to charge, and Billery creates the invoice, quote, receipt or customer. A <em>Voice</em> button dictates into the same box, and Shift + Enter adds a new line for longer jobs.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · create manually</span></div><img src="img/blw-home-menu.jpg" alt="Billery home with Create manually menu open: new invoice, new quote, new customer" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">02 · Create manually</span><b>A way out of the conversation</b>Some people want a form. <em>Create manually</em> sits quietly in the corner and opens a short menu: new invoice, new quote or new customer. The AI path is the default without being the only path.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · new invoice</span></div><img src="img/blw-invoice-new-ai.jpg" alt="Billery new invoice form with Generate line items with AI panel" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">03 · New invoice</span><b>AI inside the form, too</b>The manual form keeps a highlighted <em>Generate line items with AI</em> panel above the line items. Describe the job in plain language and it drafts the items with quantities and prices, which you then edit in the table below before saving.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · invoices</span></div><img src="img/blw-invoices.jpg" alt="Billery invoices table with draft, sent, paid, overdue and receipt" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">04 · Invoices</span><b>One table for everything you've billed</b>Number, customer, issue and due dates, amount and a status pill: grey for draft, blue for sent, green for paid, red for overdue. Receipts live in the same list with a small <em>Receipt</em> tag rather than in a separate section to go looking for.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · INV-0011</span></div><img src="img/blw-invoice.jpg" alt="Billery invoice detail with Download PDF, Share PDF, Mark as Paid, Edit and Delete" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">05 · Invoice</span><b>The document, with its next steps on top</b>The invoice reads like the PDF your customer gets: line items on an inverted header band, subtotal, VAT and total, then notes. Everything you can do next sits in one row: Download PDF, Share PDF, Mark as Paid, Edit, and a red Delete kept apart from the rest.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery.app/i/…</span></div><img src="img/blw-share-invoice.jpg" alt="Billery public invoice page as the customer sees it" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">06 · What the customer sees</span><b>A link, not an account</b>Every invoice and quote has a private share link. Your customer opens it on any device and sees your business name, the document and a <em>Download PDF</em> button, with nothing to sign up for.</figcaption></figure>
+      </div>
+      <div class="web-row">
+        <div class="browser-wrap"><button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · QUO-0006</span></div><img src="img/blw-quote.jpg" alt="Billery quote detail with Convert to Invoice button" loading="lazy"></div></button></div>
+        <figure class="shot"><figcaption><span class="mono">07 · Quote</span><b>Yes turns into an invoice in one click</b>Quotes share the invoice layout, with a validity date instead of a due date. When the customer agrees, <em>Convert to Invoice</em> carries the customer, line items and totals straight across, so nothing gets retyped.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="web-grid" style="margin-top:clamp(40px,5vw,64px)">
       <figure class="shot">
-        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-home.jpg" alt="Billery iOS Home with collected, outstanding, invoice and customer tiles" loading="lazy"></div></button>
-        <figcaption><span class="mono">01 · Home</span><b>The money question, answered first</b>Four tiles answer what a sole trader actually asks when they open the app: how much has come in, how much is still owed, how many invoices and how many clients. Each tile gets its own tinted icon so the grid scans without reading.</figcaption>
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · customers</span></div><img src="img/blw-customers.jpg" alt="Billery customers table" loading="lazy"></div></button>
+        <figcaption><span class="mono">08 · Customers</span><b>Who you bill, and how often</b>Each row shows contact details alongside counts of invoices and quotes, so your regulars stand out without a report.</figcaption>
       </figure>
       <figure class="shot">
-        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-home2.jpg" alt="Billery iOS revenue trend chart and pipeline status" loading="lazy"></div></button>
-        <figcaption><span class="mono">02 · Revenue &amp; pipeline</span><b>Six months at a glance</b>A Swift Charts bar chart of paid revenue per month, with a quiet dashed grid and a gradient on the bars. Below it, the pipeline counts documents by status, and the dot colours match the status pills used everywhere else.</figcaption>
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · Northside Bakery</span></div><img src="img/blw-customer.jpg" alt="Billery customer detail with total invoiced and document history" loading="lazy"></div></button>
+        <figcaption><span class="mono">09 · Customer</span><b>Edit in place, history alongside</b>Contact details are editable right on the page, with a side panel showing the total invoiced and every invoice and quote for that customer, each with its status.</figcaption>
       </figure>
       <figure class="shot">
-        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-invoices.jpg" alt="Billery iOS invoices list with draft, sent, paid and overdue pills" loading="lazy"></div></button>
-        <figcaption><span class="mono">03 · Invoices</span><b>Status you can see from across the room</b>Each card leads with the number and the client, puts the total top right, and ends in a status pill. The icon tile takes the status colour too, so grey is draft, blue is sent, green is paid and red is overdue even when you only see the edge of the card.</figcaption>
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · settings</span></div><img src="img/blw-profile-settings.jpg" alt="Billery document settings with numbering and toggles" loading="lazy"></div></button>
+        <figcaption><span class="mono">10 · Document settings</span><b>Paperwork that matches yours</b>Pick the currency and numbering prefixes for invoices, quotes and receipts, then toggle exactly which of your details appear on documents: logo, address, phone, email, website, VAT and company numbers.</figcaption>
       </figure>
       <figure class="shot">
-        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-invoice-detail.jpg" alt="Billery iOS invoice detail with amount, overview and actions" loading="lazy"></div></button>
-        <figcaption><span class="mono">04 · Invoice detail</span><b>Amount first, actions within thumb reach</b>The total and client sit in a summary card at the top, the facts follow in a grouped list, and the three actions (download the PDF, send to the customer, delete) are pinned above the tab bar where a thumb can reach them. Only <em>Send</em> is filled.</figcaption>
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · billing</span></div><img src="img/blw-profile-billing.jpg" alt="Billery billing tab with free plan usage meters" loading="lazy"></div></button>
+        <figcaption><span class="mono">11 · Billing</span><b>Limits you can see</b>The free plan shows usage as meters (invoices used, quotes used) next to a single upgrade button for Pro at £10 a month. Payment is handled by Stripe.</figcaption>
       </figure>
       <figure class="shot">
-        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-editor.jpg" alt="Billery iOS invoice editor with customer, dates and line items" loading="lazy"></div></button>
-        <figcaption><span class="mono">05 · Editor</span><b>One editor for invoices and quotes</b>A single SwiftUI editor handles both document types: customer picker, issue and due dates, then line items as self-contained cards with description, quantity, unit price and a running line total. Totals, discount and tax follow below.</figcaption>
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · developers</span></div><img src="img/blw-profile-developers.jpg" alt="Billery developers tab with API keys and webhooks" loading="lazy"></div></button>
+        <figcaption><span class="mono">12 · Developers</span><b>API keys and webhooks, self-serve</b>Pro users create API keys and add webhook endpoints from their settings. Webhooks fire when an invoice is sent or paid, a quote is converted or a receipt is created, and every request is signed.</figcaption>
       </figure>
       <figure class="shot">
-        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-clients.jpg" alt="Billery iOS clients list with invoice and quote counts" loading="lazy"></div></button>
-        <figcaption><span class="mono">06 · Clients</span><b>Every client, with their paperwork attached</b>Each client card shows contact details plus two chips counting their invoices and quotes, so you can see who you bill most without opening anything.</figcaption>
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · docs</span></div><img src="img/blw-docs.jpg" alt="Billery API documentation page" loading="lazy"></div></button>
+        <figcaption><span class="mono">13 · API docs</span><b>Documentation built into the product</b>A docs section covering authentication, test mode, rate limits, idempotency, errors, and the invoice, quote, receipt and webhook endpoints, opening with a copy-paste request.</figcaption>
       </figure>
       <figure class="shot">
-        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-quotes.jpg" alt="Billery iOS quotes list with draft, sent, accepted and cancelled" loading="lazy"></div></button>
-        <figcaption><span class="mono">07 · Quotes</span><b>From draft to accepted</b>Quotes follow the same card pattern with their own lifecycle: draft, sent, accepted and cancelled. When a customer says yes, the quote converts into an invoice without retyping.</figcaption>
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · light mode</span></div><img src="img/blw-light-invoices.jpg" alt="Billery invoices in light mode" loading="lazy"></div></button>
+        <figcaption><span class="mono">14 · Light mode</span><b>Two themes from one set of tokens</b>A toggle at the foot of the sidebar switches the whole app to light. Status pills, tables and the inverted header bands keep their meaning in both.</figcaption>
       </figure>
       <figure class="shot">
-        <button type="button" data-lb><div class="phone-frame light"><img src="img/bla-proposal-new.jpg" alt="Billery iOS new quote form" loading="lazy"></div></button>
-        <figcaption><span class="mono">08 · New quote</span><b>Sensible defaults</b>A new quote opens with today's date, a 14-day expiry and one empty line item ready to type into, so the fastest path is also the default one.</figcaption>
+        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery · onboarding</span></div><img src="img/blw-after-login.jpg" alt="Billery onboarding: complete your profile" loading="lazy"></div></button>
+        <figcaption><span class="mono">15 · Onboarding</span><b>One short form before you start</b>New accounts land on a single profile form (name, phone, company, address and logo) so the very first invoice already carries your branding.</figcaption>
       </figure>
-      <figure class="shot">
-        <div class="stack-note">
-          <p class="mono" style="color:var(--red);font-size:11px;letter-spacing:.1em;text-transform:uppercase">Under the hood</p>
-          <p><b>SwiftUI + Swift Charts</b> for the interface, one <code>AppState</code> observable object for data, and a typed API client. A small Node backend mirrors the web app's API so the app can be developed and tested on a real iPhone over Wi-Fi.</p>
-        </div>
-      </figure>
+    </div>
+
+    <div class="mobile-row">
+      <div class="mobile-copy">
+        <span class="mono">16 · On a phone</span>
+        <h3>The same app in your pocket</h3>
+        <p>Billery installs to the home screen as a PWA. On a phone the sidebar collapses, the home prompt fills the screen for dictating on the go, and the invoice table turns into stacked cards with the number, customer, date, amount and status.</p>
+      </div>
+      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/blw-m-home.jpg" alt="Billery home on a phone" loading="lazy"></div></button></figure>
+      <figure class="shot"><button type="button" data-lb><div class="phone-frame"><img src="img/blw-m-invoices.jpg" alt="Billery invoices as cards on a phone" loading="lazy"></div></button></figure>
     </div>
   </div></section>
 
   <section class="case-sec"><div class="wrap">
-    <h2>Inside the web app</h2>
-    <p class="intro">The web app is where the AI and the business plumbing live. These are the parts of the product a signed-in user works with, and how each one is built.</p>
-    <div class="feature-map">
-      <div><span class="mono">Home</span><b>Create menu and assistant</b><p>The home screen opens on a create menu for invoices, quotes, receipts and customers, next to an assistant you can type or talk to. Voice input uses the browser's speech recognition and lands your words in the prompt box.</p></div>
-      <div><span class="mono">AI</span><b>Invoice in a sentence</b><p>An AI-draft endpoint turns a plain-English description into line items with quantities and prices. The assistant uses typed tools to search and create customers, create invoices, quotes and receipts, and list recent documents, so its answers come from real account data.</p></div>
-      <div><span class="mono">Documents</span><b>Invoices, quotes and receipts</b><p>Each document has a draft, sent, paid, overdue or accepted state, and a quote converts to an invoice in one click with line items carried over. PDFs are rendered with react-pdf.</p></div>
-      <div><span class="mono">Customers</span><b>Share links with no sign-up</b><p>Every invoice and quote gets a tokenised public link (<code>/i/…</code> and <code>/q/…</code>) that opens on any device, with a PDF download built in.</p></div>
-      <div><span class="mono">Settings</span><b>Branding and paperwork</b><p>Logo, company name, address, VAT and company numbers, bank details and a footer line, each toggled on or off for what prints on your documents.</p></div>
-      <div><span class="mono">Developers</span><b>API keys and webhooks</b><p>Users create test and live API keys and register webhook endpoints from their profile. Webhooks are signed, keys are rate limited, and idempotency keys make retries safe.</p></div>
-      <div><span class="mono">Billing</span><b>Stripe subscription</b><p>A free tier with an invoice limit, then Pro at £10 a month through Stripe Checkout, with a self-serve billing portal for changes and cancellation.</p></div>
-      <div><span class="mono">Auth</span><b>Accounts and recovery</b><p>NextAuth with a single email form that signs you in or creates your account, plus forgot- and reset-password flows by email.</p></div>
+    <h2>Design decisions</h2>
+    <p class="intro">The choices that shape how Billery feels to use.</p>
+    <ul class="decisions">
+      <li><b>Conversation first, forms always available</b><span>Home opens on one question rather than a dashboard, because the thing people come to do is bill a job. Every AI path has a manual equivalent one click away.</span></li>
+      <li><b>AI drafts, the person decides</b><span>The model fills in the line items, but every field stays editable and nothing is sent until you press send. The AI is a faster keyboard, never an autopilot for someone's money.</span></li>
+      <li><b>The screen looks like the paper</b><span>Invoice and quote pages mirror the PDF the customer receives, so what you check is what they get.</span></li>
+      <li><b>One status language</b><span>Draft, sent, paid, overdue and accepted each have one colour, used identically in tables, detail headers, customer history, light mode and phone cards.</span></li>
+      <li><b>Zero friction for the payer</b><span>Customers never sign up. They get a PDF by email or a share link that works on any device.</span></li>
+      <li><b>Monochrome UI, one brand colour</b><span>The interface is black, white and greys, with the brand blue kept for the logo and status colours kept for meaning. Content and state do the talking.</span></li>
+    </ul>
+  </div></section>
+
+  <section class="case-sec"><div class="wrap">
+    <h2>The landing page</h2>
+    <p class="intro">A separate Next.js marketing site, written to answer the questions a sole trader actually asks, in the order they ask them. Captured from the current site.</p>
+    <div class="thumbs">
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · hero</span></div><img src="img/bl-hero.jpg" alt="Billery landing hero: Billing that takes a sentence" loading="lazy"></div></button><figcaption><b>Hero</b>"Billing that takes a sentence", with the full loop shown on the right: request, draft, invoice, paid.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · features</span></div><img src="img/bl-features.jpg" alt="Billery landing features grid" loading="lazy"></div></button><figcaption><b>Features</b>Nine jobs written as outcomes, such as "Quote it, then invoice it".</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · how it works</span></div><img src="img/bl-how.jpg" alt="Billery landing three steps" loading="lazy"></div></button><figcaption><b>How it works</b>Add a customer, describe the work, send or share.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · developers</span></div><img src="img/bl-dev.jpg" alt="Billery landing developer section" loading="lazy"></div></button><figcaption><b>Developers</b>The API pitched in plain English next to a real request.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · who it's for</span></div><img src="img/bl-who.jpg" alt="Billery landing personas carousel" loading="lazy"></div></button><figcaption><b>Who it's for</b>Personas shown as the sentence each would say to bill a job.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · install</span></div><img src="img/bl-install.jpg" alt="Billery landing PWA install steps" loading="lazy"></div></button><figcaption><b>Install</b>Three short install recipes for iPhone, Android and desktop.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · pricing</span></div><img src="img/bl-pricing.jpg" alt="Billery landing pricing" loading="lazy"></div></button><figcaption><b>Pricing</b>Free, then one Pro plan at £10 a month. No per-seat maths.</figcaption></figure>
+      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>app · sign in</span></div><img src="img/bl-signin.jpg" alt="Billery app sign-in" loading="lazy"></div></button><figcaption><b>Sign in</b>The demo replays beside one form that signs you in or creates your account.</figcaption></figure>
     </div>
-    <div class="two" style="margin-top:40px;align-items:start">
+  </div></section>
+
+  <section class="case-sec"><div class="wrap two">
+    <div class="prose">
+      <h3>Engineering highlights</h3>
+      <p><strong>Typed AI tools.</strong> The assistant acts only through a small set of typed functions (search and create customers, create invoices, quotes and receipts, list recent documents), which keeps it grounded in the account's data and easy to audit.</p>
+      <p><strong>A public REST API designed for developers.</strong> Create invoices, quotes and receipts from a booking form or shop, with optional email delivery in the same request. Test keys validate and price exactly like live keys but write nothing and email nobody. Idempotency keys make retries safe, each key is rate limited, and webhooks are signed.</p>
+      <p>Prisma on PostgreSQL, NextAuth with password reset, Stripe Checkout and billing portal, PDF rendering with react-pdf, and Zod validation throughout.</p>
+    </div>
+    <div>
       <pre class="code"><span class="c"># Create and send an invoice from your own system</span>
 <span class="k">POST</span> /api/v1/invoices
 Authorization: Bearer <span class="v">blry_test_…</span>
@@ -771,49 +836,15 @@ Idempotency-Key: <span class="v">order-8812</span>
   ],
   <span class="s">"send_email"</span>: <span class="v">true</span>
 }</pre>
-      <figure class="shot">
-        <button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>billery app · sign in</span></div><img src="img/bl-signin.jpg" alt="Billery web app sign-in with product demo on the left" loading="lazy"></div></button>
-        <figcaption><b>The front door</b>The sign-in screen keeps selling while you sign in: the left half replays the invoice-in-a-sentence demo, the right half is one form for new and returning users.</figcaption>
-      </figure>
     </div>
   </div></section>
 
   <section class="case-sec"><div class="wrap">
-    <h2>Design decisions</h2>
-    <p class="intro">The choices that shape how Billery feels to use.</p>
-    <ul class="decisions">
-      <li><b>AI drafts, the person decides</b><span>The model fills in the line items, but every field stays editable and nothing is sent until you press send. The AI is a faster keyboard, never an autopilot for someone's money.</span></li>
-      <li><b>One status language</b><span>Draft, sent, paid, overdue, accepted and cancelled each have one colour, used for pills, icon tiles, pipeline dots and chart legends on iOS and web alike.</span></li>
-      <li><b>Voice as a first-class input</b><span>On a job site with dirty hands, talking is faster than typing, so the mic sits next to the prompt box instead of in a menu.</span></li>
-      <li><b>Zero friction for the payer</b><span>Customers never sign up. They get a PDF by email or a share link that works on any device.</span></li>
-      <li><b>From dashboard-first to action-first</b><span>Billery v1 opened on charts. The rebuild opens on the thing people come to do, which is describing a job and sending the invoice. The numbers moved one level down.</span></li>
-    </ul>
-  </div></section>
-
-  <section class="case-sec"><div class="wrap">
-    <h2>Where it started, and the marketing site</h2>
-    <p class="intro">Billery v1 (2025) was a cross-border billing tool for freelancers, with currency accounts in GBP, USD and NGN, built on Next.js 13, Redux Toolkit and Bootstrap. I rebuilt the product around the invoice-in-a-sentence idea and designed a new marketing site to match.</p>
-    <div class="thumbs">
+    <h2>Where it started</h2>
+    <p class="intro">Billery v1 (2025) was a cross-border billing tool for freelancers, with currency accounts in GBP, USD and NGN, built on Next.js 13, Redux Toolkit and Bootstrap and opening on charts. The rebuild above swapped the dashboard-first design for the conversation-first one.</p>
+    <div class="web-grid">
       <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>v1 · home</span></div><img src="img/bl-v1-dashboard.jpg" alt="Billery v1 dashboard with currency accounts" loading="lazy"></div></button><figcaption><b>v1 dashboard</b>Balances per currency and a billed-per-month chart.</figcaption></figure>
       <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>v1 · overview</span></div><img src="img/bl-v1-overview.jpg" alt="Billery v1 overview tiles and chart" loading="lazy"></div></button><figcaption><b>v1 overview</b>Billed, paid, pending and overdue tiles with a payout calculator.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · hero</span></div><img src="img/bl-hero.jpg" alt="Billery marketing site hero" loading="lazy"></div></button><figcaption><b>Site hero</b>The whole loop in one frame: request, draft, invoice, paid.</figcaption></figure>
-      <figure class="shot"><button type="button" data-lb><div class="browser"><div class="bar"><i></i><i></i><i></i><span>site · developers</span></div><img src="img/bl-dev.jpg" alt="Billery marketing site developer section" loading="lazy"></div></button><figcaption><b>Developers section</b>The API pitched in plain English with a real request.</figcaption></figure>
-    </div>
-  </div></section>
-
-  <section class="case-sec"><div class="wrap two">
-    <div class="prose">
-      <h3>Engineering highlights</h3>
-      <p><strong>A public REST API designed for developers.</strong> Create invoices, quotes and receipts from your own booking form or shop, with optional email delivery in the same request. Test keys validate and price exactly like live keys but write nothing and email nobody.</p>
-      <p><strong>Typed AI tools.</strong> The assistant can only act through a small set of typed functions, which keeps it grounded in the account's data and easy to audit.</p>
-      <p><strong>Two clients, one API shape.</strong> The iOS app and the web app speak to the same API contract, so features land on both without a second backend design.</p>
-    </div>
-    <div class="prose">
-      <h3>Brand &amp; campaigns</h3>
-      <div style="display:grid;grid-template-columns:140px 1fr;gap:16px;align-items:center">
-        <button type="button" data-lb style="all:unset;cursor:zoom-in;display:block"><img src="img/bl-social-1.jpg" alt="Billery social post: 3 steps to get started with Billery" loading="lazy" style="border:1px solid var(--rule-2)"></button>
-        <p>Brand assets and a launch social campaign ("3 steps to get started") designed alongside the product.</p>
-      </div>
     </div>
   </div></section>
 
@@ -1102,8 +1133,8 @@ Idempotency-Key: <span class="v">order-8812</span>
     ["Design systems", "Shared language between Figma and code.", ["u:Design tokens","u:Semantic colour","u:8pt spacing grid","u:Type scales","u:Component libraries","u:Dark mode","u:Light & dark theming","Figma variables","Figma component properties","Auto layout","Storybook","Style Dictionary","Documentation sites","Design system governance"]],
     ["Interaction & motion", "Movement that explains state.", ["u:Framer Motion","u:GSAP","u:Lenis smooth scroll","u:Reanimated 4","u:Gesture Handler","u:Micro-interactions","u:Custom cursors","Haptics","Lottie","Rive","Spline","After Effects","Principle","ProtoPie","View Transitions API","Scroll-driven animation"]],
     ["Accessibility", "Usable by everyone, on every input.", ["u:WCAG 2.2 AA contrast","u:Semantic HTML","u:Keyboard navigation","u:Reduced motion","VoiceOver","TalkBack","Dynamic Type","ARIA patterns","Screen reader testing","Inclusive copywriting"]],
-    ["Front-end engineering", "Production UI for the web.", ["u:TypeScript","u:JavaScript (ES2024)","u:React 19","u:Next.js 16 (App Router)","u:Next.js (Pages Router)","u:Tailwind CSS v4","u:CSS / Sass","u:Bootstrap","u:Redux Toolkit","u:Zustand","u:React Hook Form","u:Zod","u:Formik & Yup","u:react-pdf","u:ApexCharts","u:Iconify & Lucide","u:Progressive Web Apps","u:SEO, sitemaps & robots","u:Vercel Analytics","Vite","Astro","Svelte","Vue","Three.js","D3.js","TanStack Query","shadcn/ui","Radix UI","CSS container queries"]],
-    ["Mobile & native", "Apps that feel at home on the device.", ["u:React Native","u:Expo SDK 57","u:Expo Router","u:Expo Modules API","u:Expo config plugins","u:Swift","u:SwiftUI","u:UIKit","u:Swift Charts","u:PhotosUI","u:AVFoundation","u:XcodeGen","u:Screen Time API","u:FamilyControls & DeviceActivity","u:Managed Settings shields","u:App extensions & App Groups","u:Vision","u:Core ML","u:MapKit","u:Sign in with Apple","u:Google Sign-In","u:Push notifications","u:Universal links & deep links","u:Camera & image picker","u:iOS Simulator","u:App Store Connect","TestFlight","EAS Build & Submit","Android / Kotlin","Jetpack Compose","WidgetKit","Live Activities"]],
+    ["Front-end engineering", "Production UI for the web.", ["u:TypeScript","u:JavaScript (ES2024)","u:React 19","u:Next.js 16 (App Router)","u:Next.js (Pages Router)","u:Tailwind CSS v4","u:CSS / Sass","u:Bootstrap","u:Redux Toolkit","u:Zustand","u:React Hook Form","u:Zod","u:Formik & Yup","u:react-pdf","u:ApexCharts","u:Iconify & Lucide","u:Progressive Web Apps","u:SEO, sitemaps & robots","u:Vercel Analytics","u:Web Speech API","Vite","Astro","Svelte","Vue","Three.js","D3.js","TanStack Query","shadcn/ui","Radix UI","CSS container queries"]],
+    ["Mobile & native", "Apps that feel at home on the device.", ["u:React Native","u:Expo SDK 57","u:Expo Router","u:Expo Modules API","u:Expo config plugins","u:Swift","SwiftUI","u:UIKit","Swift Charts","PhotosUI","AVFoundation","XcodeGen","u:Screen Time API","u:FamilyControls & DeviceActivity","u:Managed Settings shields","u:App extensions & App Groups","u:Vision","u:Core ML","u:MapKit","u:Sign in with Apple","u:Google Sign-In","u:Push notifications","u:Universal links & deep links","u:Camera & image picker","u:iOS Simulator","u:App Store Connect","TestFlight","EAS Build & Submit","Android / Kotlin","Jetpack Compose","WidgetKit","Live Activities"]],
     ["Backend & data", "The layer the interface depends on.", ["u:Supabase","u:PostgreSQL","u:Row-level security","u:Multi-tenant architecture","u:SQL migrations","u:Prisma ORM","u:NextAuth / Auth.js","u:Node.js","u:WebSockets","u:REST API design","u:API keys & test mode","u:Idempotency keys","u:Rate limiting","u:Signed webhooks","u:Stripe subscriptions","u:GoCardless","u:Xero integration","u:Multi-currency","u:Transactional email","Serverless functions","Redis","GraphQL","tRPC","Firebase","Cloudflare Workers","Docker"]],
     ["AI & voice", "Designing products where a model does real work.", ["u:LLM product design","u:Tool / function calling","u:OpenAI API","u:Groq","u:Deepgram Voice Agent","u:Twilio Media Streams","u:Vapi","u:Real-time speech-to-text","u:Voice dictation","u:Conversation design","u:Prompt design","u:Grounded assistants","u:On-device ML","u:WhatsApp Business webhooks","u:Human-in-the-loop design","Claude API","Structured outputs","RAG & embeddings","LLM evals","Langfuse / Helicone"]],
     ["Tools & workflow", "What's open on my machine most days.", ["Figma","FigJam","Framer","u:Xcode","u:VS Code","u:Claude Code","u:Git & GitHub","u:Vercel","u:Expo Go & dev builds","u:ngrok","u:ESLint","u:Prettier","u:Husky & lint-staged","u:Supabase CLI","Cursor","Linear","Notion","Jira","Miro","Adobe Illustrator","Adobe Photoshop","Sentry","PostHog","Mixpanel","Jest","Playwright"]]
